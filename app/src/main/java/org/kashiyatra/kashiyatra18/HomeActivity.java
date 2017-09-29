@@ -1,6 +1,10 @@
 package org.kashiyatra.kashiyatra18;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,9 +16,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.kashiyatra.kashiyatra18.fragments.ContactUsFragment;
 import org.kashiyatra.kashiyatra18.fragments.DevTeamFragment;
@@ -30,42 +36,97 @@ public class HomeActivity extends AppCompatActivity
 
     private TabsPagerAdapter mTabsPagerAdapter;
     private ViewPager mViewPager;
+    private int back_count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.getMenu().getItem(0).setChecked(true);
 
         mTabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager = findViewById(R.id.viewpager);
         mViewPager.setAdapter(mTabsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
+                if (tab.getPosition() == 4) {
+                    AppBarLayout appBarLayout = findViewById(R.id.app_bar);
+                    appBarLayout.setExpanded(false, true);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            super.onBackPressed();
+        } else if (back_count == 0) {
+            back_count = 1;
+            Toast.makeText(this, "Tap back again to exit", Toast.LENGTH_SHORT).show();
+            Thread tim = new Thread() {
+                public void run() {
+                    try {
+                        sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        back_count = 0;
+                    }
+                }
+            };
+            tim.start();
+
         } else {
+            finish();
             super.onBackPressed();
         }
+    }
+
+    public void call(View v) {
+        String uri = "tel:" + ((TextView) v).getText();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
+    }
+
+    public void mail(View view) {
+        String[] email = new String[]{(String) ((TextView) view).getText()};
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Query regarding Kashiyatra");
+        startActivity(intent);
     }
 
     @Override
@@ -90,12 +151,10 @@ public class HomeActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        int index;
         switch (id) {
             case R.id.nav_updates:
                 mViewPager.setCurrentItem(0);
@@ -125,7 +184,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -138,8 +197,6 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
 
             switch (position) {
                 case 0:
@@ -165,14 +222,7 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 8;
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            Log.d("Swapped Pos = ", getItemPosition(object) + "");
-            return super.getItemPosition(object);
         }
 
         @Override
@@ -198,5 +248,6 @@ public class HomeActivity extends AppCompatActivity
                     return "UPDATES";
             }
         }
+
     }
 }

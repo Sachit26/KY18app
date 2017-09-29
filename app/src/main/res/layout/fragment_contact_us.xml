@@ -1,13 +1,123 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kashiyatra.kashiyatra18.fragments.ContactUsFragment">
+    android:background="@color/colorPrimaryDark"
+    android:fillViewport="true"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Contact Us Fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="Publicity" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Sai Sumanth" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9493690659" />
+
+                    <TextView
+                        style="@style/CG_Mail"
+                        android:text="sumanth@kashiyatra.org" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Kalpesh Bansal" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9636804040" />
+
+                    <TextView
+                        style="@style/CG_Mail"
+                        android:text="kalpesh@kashiyatra.org" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="Marketing" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Prakarsh Dhawan" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9407279453" />
+
+                    <TextView
+                        style="@style/CG_Mail"
+                        android:text="prakarsh@kashiyatra.org" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Yogesh Gutta" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9628194988" />
+
+                    <TextView
+                        style="@style/CG_Mail"
+                        android:text="yogesh@kashiyatra.org" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="Social Media Marketing" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Mayank Gupta" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9660995511" />
+
+                    <TextView
+                        style="@style/CG_Mail"
+                        android:text="mayank@kashiyatra.org" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="event_names">
+        <item>Bandish</item>
+        <item>Enquizta</item>
+        <item>Mirage</item>
+        <item>Samvaad</item>
+        <item>Abhinay</item>
+        <item>Toolika</item>
+        <item>Natraj</item>
+        <item>Crosswindz</item>
+    </string-array>
+
+    <string-array name="event_descriptions">
+        <item>Music</item>
+        <item>Quiz</item>
+        <item>Lifestyle Event</item>
+        <item>Literary Arts</item>
+        <item>Theatre</item>
+        <item>Fine arts</item>
+        <item>Dance</item>
+        <item>Rock Bands</item>
+    </string-array>
+
+</resources>
