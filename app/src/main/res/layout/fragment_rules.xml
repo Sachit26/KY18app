@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kashiyatra.kashiyatra18.fragments.UpdatesFragment">
+    android:background="@color/white"
+    tools:context="org.kashiyatra.kashiyatra18.fragments.RulesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/rules_text_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Updates Fragment" />
+        android:layout_height="match_parent" />
 
 </android.support.v4.widget.NestedScrollView>

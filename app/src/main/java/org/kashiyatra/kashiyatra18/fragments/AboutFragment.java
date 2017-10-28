@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 
 import org.kashiyatra.kashiyatra18.R;
 
-public class UpdatesFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
 
-    public UpdatesFragment() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
 
-    public static UpdatesFragment newInstance() {
-        UpdatesFragment fragment = new UpdatesFragment();
+    public static AboutFragment newInstance() {
+        AboutFragment fragment = new AboutFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -28,6 +28,6 @@ public class UpdatesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_updates, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 }

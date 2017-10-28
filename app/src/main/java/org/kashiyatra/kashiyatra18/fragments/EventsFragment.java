@@ -3,11 +3,12 @@ package org.kashiyatra.kashiyatra18.fragments;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,14 +67,27 @@ public class EventsFragment extends Fragment {
         };
 
         mEventRecycler = rootView.findViewById(R.id.eventlist_recycler_view);
-        mEventLayoutManager = new GridLayoutManager(getActivity(), 2);
+        final DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        final int numColumns = 1 + displayMetrics.widthPixels * 160 / (displayMetrics.densityDpi * 200);
+        mEventLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mEventRecycler.setLayoutManager(mEventLayoutManager);
+        mEventRecycler.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewAdapterPosition();
+                int padding = displayMetrics.densityDpi * 4 / 160;
+                outRect.top = itemPosition < numColumns ? padding : padding / 2;
+                outRect.left = itemPosition % numColumns == 0 ? padding : padding / 2;
+                outRect.right = (itemPosition + 1) % numColumns == 0 ? padding : padding / 2;
+                outRect.bottom = padding / 2;
+            }
+        });
         mEventAdapter = new EventsAdapter(names, descriptions, backgrounds, icons);
         mEventRecycler.setAdapter(mEventAdapter);
         mEventRecycler.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Log.d("Clicked", "" + position);
                         Intent intent = new Intent(getActivity(), EventActivity.class);
                         intent.putExtra("POSITION", position);
                         startActivity(intent);

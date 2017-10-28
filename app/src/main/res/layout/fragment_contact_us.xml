@@ -19,6 +19,14 @@
                 style="@style/Department_Header"
                 android:text="Publicity" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gold" />
+
+
             <LinearLayout style="@style/CG_Row">
 
                 <LinearLayout style="@style/CG_Holder">
@@ -58,6 +66,13 @@
             <TextView
                 style="@style/Department_Header"
                 android:text="Marketing" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 
@@ -99,6 +114,13 @@
             <TextView
                 style="@style/Department_Header"
                 android:text="Social Media Marketing" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 

@@ -1,10 +1,15 @@
 package org.kashiyatra.kashiyatra18;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,12 +21,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
+
+import org.kashiyatra.kashiyatra18.fragments.AboutFragment;
 import org.kashiyatra.kashiyatra18.fragments.ContactUsFragment;
 import org.kashiyatra.kashiyatra18.fragments.DevTeamFragment;
 import org.kashiyatra.kashiyatra18.fragments.EventsFragment;
@@ -29,21 +40,31 @@ import org.kashiyatra.kashiyatra18.fragments.FaqFragment;
 import org.kashiyatra.kashiyatra18.fragments.GalleryFragment;
 import org.kashiyatra.kashiyatra18.fragments.MapFragment;
 import org.kashiyatra.kashiyatra18.fragments.ScheduleFragment;
-import org.kashiyatra.kashiyatra18.fragments.UpdatesFragment;
+
+import static java.lang.Math.min;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences prefs;
     private TabsPagerAdapter mTabsPagerAdapter;
     private ViewPager mViewPager;
+    private AppBarLayout appBarLayout;
     private int back_count = 0;
+    private boolean isLoggedIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final TextView titleTextView = findViewById(R.id.title_view);
+        titleTextView.setText(getTitle());
+
+        prefs = getSharedPreferences(SplashActivity.storeUserDetails, Context.MODE_PRIVATE);
+        isLoggedIn = prefs.getBoolean("isLoggedIn", false);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,10 +72,46 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        final int screenWidth = displayMetrics.widthPixels;
+        appBarLayout = findViewById(R.id.app_bar);
+        appBarLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                int heightPx = screenWidth * 1 / 3;
+                setAppBarOffset(heightPx);
+            }
+        });
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                float range = appBarLayout.getTotalScrollRange();
+                float initial = range - screenWidth * 1 / 3;
+                float alpha = min((range + verticalOffset) / initial, 1);
+                (findViewById(R.id.coverview)).setAlpha(1 - alpha);
+                titleTextView.setAlpha(1 - alpha);
+            }
+        });
+
         final NavigationView navigationView = findViewById(R.id.nav_view);
+        final View headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        //Set up NavigationView Header with User Info
+        ImageView dpView = headerView.findViewById(R.id.fb_dpview);
+        TextView nameView = headerView.findViewById(R.id.fb_username);
+        TextView emailView = headerView.findViewById(R.id.fb_email);
+
+        if (isLoggedIn) {
+            byte[] decodedByte = Base64.decode(prefs.getString("profilePic", ""), 0);
+            Bitmap dp = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+            dpView.setImageBitmap(dp);
+            nameView.setText(prefs.getString("fullName", ""));
+            emailView.setText(prefs.getString("email", ""));
+        }
 
         mTabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
@@ -85,12 +142,22 @@ public class HomeActivity extends AppCompatActivity
         });
     }
 
+    private void setAppBarOffset(int offsetPx) {
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
+        behavior.onNestedPreScroll((CoordinatorLayout) findViewById(R.id.home_coordinator_layout), appBarLayout, null, 0, offsetPx, new int[]{0, 0}, 0);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (!isLoggedIn) {
             super.onBackPressed();
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            overridePendingTransition(R.anim.pull_left, R.anim.push_right);
+            startActivity(intent);
         } else if (back_count == 0) {
             back_count = 1;
             Toast.makeText(this, "Tap back again to exit", Toast.LENGTH_SHORT).show();
@@ -133,6 +200,10 @@ public class HomeActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+        if (!isLoggedIn) {
+            MenuItem logout = menu.findItem(R.id.action_logout);
+            logout.setVisible(false);
+        }
         return true;
     }
 
@@ -143,8 +214,8 @@ public class HomeActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            Logout();
             return true;
         }
 
@@ -156,7 +227,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
-            case R.id.nav_updates:
+            case R.id.nav_about:
                 mViewPager.setCurrentItem(0);
                 break;
             case R.id.nav_schedule:
@@ -189,6 +260,17 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    void Logout() {
+        LoginManager.getInstance().logOut();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.commit();
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.pull_left, R.anim.push_right);
+        finish();
+    }
+
     private class TabsPagerAdapter extends FragmentPagerAdapter {
 
         private TabsPagerAdapter(FragmentManager fm) {
@@ -200,7 +282,7 @@ public class HomeActivity extends AppCompatActivity
 
             switch (position) {
                 case 0:
-                    return UpdatesFragment.newInstance();
+                    return AboutFragment.newInstance();
                 case 1:
                     return ScheduleFragment.newInstance();
                 case 2:
@@ -216,7 +298,7 @@ public class HomeActivity extends AppCompatActivity
                 case 7:
                     return DevTeamFragment.newInstance();
                 default:
-                    return UpdatesFragment.newInstance();
+                    return AboutFragment.newInstance();
             }
         }
 
@@ -229,7 +311,7 @@ public class HomeActivity extends AppCompatActivity
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "UPDATES";
+                    return "ABOUT";
                 case 1:
                     return "SCHEDULE";
                 case 2:

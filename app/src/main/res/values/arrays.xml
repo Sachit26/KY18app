@@ -11,7 +11,29 @@
         <item>Crosswindz</item>
     </string-array>
 
+    <string-array name="event_types">
+        <item>Music</item>
+        <item>Quiz</item>
+        <item>Lifestyle Event</item>
+        <item>Literary Arts</item>
+        <item>Theatre</item>
+        <item>Fine arts</item>
+        <item>Dance</item>
+        <item>Rock Bands</item>
+    </string-array>
+
     <string-array name="event_descriptions">
+        <item>Music</item>
+        <item>Quiz</item>
+        <item>Lifestyle Event</item>
+        <item>Literary Arts</item>
+        <item>Theatre</item>
+        <item>Fine arts</item>
+        <item>Dance</item>
+        <item>Rock Bands</item>
+    </string-array>
+
+    <string-array name="event_rules">
         <item>Music</item>
         <item>Quiz</item>
         <item>Lifestyle Event</item>
