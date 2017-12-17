@@ -5,13 +5,10 @@
     android:background="@color/colorPrimaryDark"
     tools:context="org.kashiyatra.kashiyatra18.fragments.ScheduleFragment">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Coming Soon!"
-        android:textColor="@color/white"
-        android:textSize="28sp" />
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@drawable/coming_soon" />
 
 </android.support.v4.widget.NestedScrollView>

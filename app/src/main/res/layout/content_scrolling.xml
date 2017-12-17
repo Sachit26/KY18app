@@ -32,21 +32,19 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/spookyback"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.3" />
+                app:layout_collapseParallaxMultiplier="0.2" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
-                android:paddingBottom="50dp"
                 android:paddingLeft="100dp"
                 android:paddingRight="50dp"
-                android:paddingTop="50dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5" />
+                app:layout_collapseParallaxMultiplier="0.4" />
 
             <ImageView
                 android:id="@+id/coverview"

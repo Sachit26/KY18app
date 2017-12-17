@@ -1,7 +1,9 @@
 package org.kashiyatra.kashiyatra18;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -18,7 +20,6 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.kashiyatra.kashiyatra18.fragments.DescriptionFragment;
 import org.kashiyatra.kashiyatra18.fragments.RulesFragment;
@@ -31,7 +32,9 @@ public class EventActivity extends AppCompatActivity {
     private TabsPagerAdapter mTabsPagerAdapter;
     private ViewPager mViewPager;
     private AppBarLayout appBarLayout;
+    private TabLayout mTabLayout;
     private int eventPosition;
+    private int subeventPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,8 @@ public class EventActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.event_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        eventPosition = getIntent().getIntExtra("POSITION", 0);
+        eventPosition = getIntent().getIntExtra("EVENT_POSITION", 0);
+        subeventPosition = getIntent().getIntExtra("SUBEVENT_POSITION", 0);
 
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -59,23 +63,67 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 float range = appBarLayout.getTotalScrollRange();
-                float alpha = min((1 + verticalOffset / range) * 3 / 2, 1);
+                float initial = range - screenWidth * 1 / 3;
+                float alpha = min((range + verticalOffset) / initial, 1);
                 (findViewById(R.id.event_banner)).setAlpha(alpha);
             }
         });
 
-        ImageView eventImageView = findViewById(R.id.event_banner);
-        Bitmap eventBanner = BitmapFactory.decodeResource(getResources(), R.drawable.events);
-        eventImageView.setImageResource(R.drawable.events);
-        getSupportActionBar().setTitle(getResources().getStringArray(R.array.event_names)[eventPosition]);
+        String subeventName;
+        int eventBanner;
 
-        Palette.from(eventBanner).generate(new Palette.PaletteAsyncListener() {
+        switch (eventPosition) {
+            case 0:
+                subeventName = getResources().getStringArray(R.array.bandish_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.bandish_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 1:
+                subeventName = getResources().getStringArray(R.array.enquizta_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.enquizta_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 2:
+                subeventName = getResources().getStringArray(R.array.mirage_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.mirage_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 3:
+                subeventName = getResources().getStringArray(R.array.samwaad_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.samwaad_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 4:
+                subeventName = getResources().getStringArray(R.array.abhinay_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.abhinay_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 5:
+                subeventName = getResources().getStringArray(R.array.toolika_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.toolika_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 6:
+                subeventName = getResources().getStringArray(R.array.natraj_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.natraj_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            case 7:
+                subeventName = getResources().getStringArray(R.array.crosswindz_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.crosswindz_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+            default:
+                subeventName = getResources().getStringArray(R.array.bandish_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.bandish_subevent_images).getResourceId(subeventPosition, -1);
+                break;
+        }
+
+        getSupportActionBar().setTitle(subeventName);
+        Bitmap img = BitmapFactory.decodeResource(getResources(), eventBanner);
+
+        ImageView eventImageView = findViewById(R.id.event_banner);
+        eventImageView.setImageBitmap(img);
+
+        Palette.from(img).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
-                int darkVibrantColor = palette.getDarkVibrantColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
-                int lightMutedColor = palette.getLightMutedColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
+                int darkMutedColor = palette.getDarkMutedColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
+                int darkVibrantColor = palette.getDarkVibrantColor(darkMutedColor);
                 appBarLayout.setBackgroundColor(darkVibrantColor);
-                tabLayout.setBackgroundColor(lightMutedColor);
+                tabLayout.setBackgroundColor(darkVibrantColor);
 
             }
         });
@@ -104,7 +152,9 @@ public class EventActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_register:
-                Toast.makeText(getApplicationContext(), "Will be added soon", Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("http://kashiyatra.org/dashboard/events");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -129,11 +179,11 @@ public class EventActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return DescriptionFragment.newInstance(eventPosition);
+                    return DescriptionFragment.newInstance(eventPosition, subeventPosition);
                 case 1:
-                    return RulesFragment.newInstance(eventPosition);
+                    return RulesFragment.newInstance(eventPosition, subeventPosition);
                 default:
-                    return RulesFragment.newInstance(eventPosition);
+                    return RulesFragment.newInstance(eventPosition, subeventPosition);
             }
         }
 

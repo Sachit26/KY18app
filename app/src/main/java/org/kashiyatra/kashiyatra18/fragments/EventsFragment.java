@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.kashiyatra.kashiyatra18.EventActivity;
+import org.kashiyatra.kashiyatra18.EventListActivity;
 import org.kashiyatra.kashiyatra18.R;
 import org.kashiyatra.kashiyatra18.adapters.EventsAdapter;
 import org.kashiyatra.kashiyatra18.utils.RecyclerItemClickListener;
@@ -56,20 +56,21 @@ public class EventsFragment extends Fragment {
         };
 
         Bitmap icons[] = {
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_trophy)
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_bandish),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_enquizta),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_mirage),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_samwaad),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_abhinay),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_toolika),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_natraj),
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_crosswindz)
         };
 
         mEventRecycler = rootView.findViewById(R.id.eventlist_recycler_view);
         final DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        final int numColumns = 1 + displayMetrics.widthPixels * 160 / (displayMetrics.densityDpi * 200);
+//        final int numColumns = 1 + displayMetrics.widthPixels * 160 / (displayMetrics.densityDpi * 200);
+        final int numColumns = 2;
         mEventLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mEventRecycler.setLayoutManager(mEventLayoutManager);
         mEventRecycler.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -88,7 +89,7 @@ public class EventsFragment extends Fragment {
         mEventRecycler.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(getActivity(), EventActivity.class);
+                        Intent intent = new Intent(getActivity(), EventListActivity.class);
                         intent.putExtra("POSITION", position);
                         startActivity(intent);
                     }

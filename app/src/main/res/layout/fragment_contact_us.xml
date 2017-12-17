@@ -80,7 +80,7 @@
 
                     <TextView
                         style="@style/CG_Name"
-                        android:text="Prakarsh Dhawan" />
+                        android:text="Prakarsh Saxena" />
 
                     <TextView
                         style="@style/CG_Contact"

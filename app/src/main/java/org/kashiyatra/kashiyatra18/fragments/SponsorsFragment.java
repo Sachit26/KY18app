@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import org.kashiyatra.kashiyatra18.R;
 
 
-public class GalleryFragment extends Fragment {
+public class SponsorsFragment extends Fragment {
 
-    public GalleryFragment() {
+    public SponsorsFragment() {
         // Required empty public constructor
     }
 
 
-    public static GalleryFragment newInstance() {
-        GalleryFragment fragment = new GalleryFragment();
+    public static SponsorsFragment newInstance() {
+        SponsorsFragment fragment = new SponsorsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

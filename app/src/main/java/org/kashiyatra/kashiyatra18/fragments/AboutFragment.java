@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import org.kashiyatra.kashiyatra18.R;
 
@@ -28,6 +29,9 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_about, container, false);
+        WebView aboutView = rootView.findViewById(R.id.about_text_view);
+        aboutView.loadData(getResources().getString(R.string.ky_about), "text/html", "utf-8");
+        return rootView;
     }
 }

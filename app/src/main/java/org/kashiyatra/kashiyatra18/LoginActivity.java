@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -32,7 +33,7 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginButton fb_login_button;
-    private Button reg_later_button;
+    private Button reg_later_button, reg_now_button;
     private CallbackManager callbackManager;
     private ProgressBar pb;
 
@@ -54,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         fb_login_button = findViewById(R.id.fb_login_button);
         reg_later_button = findViewById(R.id.register_later);
+        reg_now_button = findViewById(R.id.register_now);
         pb = findViewById(R.id.progress);
         pb.setVisibility(View.GONE);
         fb_login_button.setReadPermissions("email", "public_profile");
@@ -100,6 +102,17 @@ public class LoginActivity extends AppCompatActivity {
                 startHomeActivity();
             }
         });
+        reg_now_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://www.kashiyatra.org/form/"));
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void startHomeActivity() {

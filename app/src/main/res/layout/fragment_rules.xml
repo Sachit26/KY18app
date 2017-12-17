@@ -5,9 +5,10 @@
     android:background="@color/white"
     tools:context="org.kashiyatra.kashiyatra18.fragments.RulesFragment">
 
-    <TextView
+    <WebView
         android:id="@+id/rules_text_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:padding="10dp" />
 
 </android.support.v4.widget.NestedScrollView>

@@ -37,7 +37,6 @@ import org.kashiyatra.kashiyatra18.fragments.ContactUsFragment;
 import org.kashiyatra.kashiyatra18.fragments.DevTeamFragment;
 import org.kashiyatra.kashiyatra18.fragments.EventsFragment;
 import org.kashiyatra.kashiyatra18.fragments.FaqFragment;
-import org.kashiyatra.kashiyatra18.fragments.GalleryFragment;
 import org.kashiyatra.kashiyatra18.fragments.MapFragment;
 import org.kashiyatra.kashiyatra18.fragments.ScheduleFragment;
 
@@ -79,7 +78,7 @@ public class HomeActivity extends AppCompatActivity
         appBarLayout.post(new Runnable() {
             @Override
             public void run() {
-                int heightPx = screenWidth * 1 / 3;
+                int heightPx = screenWidth / 3;
                 setAppBarOffset(heightPx);
             }
         });
@@ -87,7 +86,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 float range = appBarLayout.getTotalScrollRange();
-                float initial = range - screenWidth * 1 / 3;
+                float initial = range - screenWidth / 3;
                 float alpha = min((range + verticalOffset) / initial, 1);
                 (findViewById(R.id.coverview)).setAlpha(1 - alpha);
                 titleTextView.setAlpha(1 - alpha);
@@ -104,6 +103,7 @@ public class HomeActivity extends AppCompatActivity
         ImageView dpView = headerView.findViewById(R.id.fb_dpview);
         TextView nameView = headerView.findViewById(R.id.fb_username);
         TextView emailView = headerView.findViewById(R.id.fb_email);
+
 
         if (isLoggedIn) {
             byte[] decodedByte = Base64.decode(prefs.getString("profilePic", ""), 0);
@@ -125,7 +125,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
-                if (tab.getPosition() == 4) {
+                if (tab.getPosition() == 3) {
                     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
                     appBarLayout.setExpanded(false, true);
                 }
@@ -236,15 +236,15 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_events:
                 mViewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_gallery:
+            case R.id.nav_location:
                 mViewPager.setCurrentItem(3);
                 break;
-            case R.id.nav_location:
+            case R.id.nav_faq:
                 mViewPager.setCurrentItem(4);
                 break;
-            case R.id.nav_faq:
-                mViewPager.setCurrentItem(5);
-                break;
+//            case R.id.nav_sponsors:
+//                mViewPager.setCurrentItem(5);
+//                break;
             case R.id.nav_contact_us:
                 mViewPager.setCurrentItem(6);
                 break;
@@ -288,14 +288,14 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return EventsFragment.newInstance();
                 case 3:
-                    return GalleryFragment.newInstance();
-                case 4:
                     return MapFragment.newInstance();
-                case 5:
+                case 4:
                     return FaqFragment.newInstance();
-                case 6:
+//                case 5:
+//                    return SponsorsFragment.newInstance();
+                case 5:
                     return ContactUsFragment.newInstance();
-                case 7:
+                case 6:
                     return DevTeamFragment.newInstance();
                 default:
                     return AboutFragment.newInstance();
@@ -304,7 +304,7 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 8;
+            return 7;
         }
 
         @Override
@@ -317,14 +317,14 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return "EVENTS";
                 case 3:
-                    return "GALLERY";
+                    return "MAP";
                 case 4:
-                    return "Map";
-                case 5:
                     return "FAQ";
-                case 6:
+//                case 5:
+//                    return "SPONSORS";
+                case 5:
                     return "CONTACT US";
-                case 7:
+                case 6:
                     return "DEVELOPERS";
                 default:
                     return "UPDATES";

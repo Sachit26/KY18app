@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@null"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/mic" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,10 +25,10 @@
         <ImageView
             android:id="@+id/event_icon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@null"
-            android:src="@drawable/ic_trophy" />
+            android:src="@drawable/ic_toolika" />
 
         <TextView
             android:id="@+id/event_title"
@@ -43,12 +44,12 @@
 
         <TextView
             android:id="@+id/event_desc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:shadowColor="@color/black"
             android:shadowRadius="10"
             android:text="Description"
+            android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/desc_text_size" />

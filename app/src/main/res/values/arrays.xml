@@ -4,22 +4,11 @@
         <item>Bandish</item>
         <item>Enquizta</item>
         <item>Mirage</item>
-        <item>Samvaad</item>
+        <item>Samwaad</item>
         <item>Abhinay</item>
         <item>Toolika</item>
         <item>Natraj</item>
         <item>Crosswindz</item>
-    </string-array>
-
-    <string-array name="event_types">
-        <item>Music</item>
-        <item>Quiz</item>
-        <item>Lifestyle Event</item>
-        <item>Literary Arts</item>
-        <item>Theatre</item>
-        <item>Fine arts</item>
-        <item>Dance</item>
-        <item>Rock Bands</item>
     </string-array>
 
     <string-array name="event_descriptions">
@@ -33,15 +22,324 @@
         <item>Rock Bands</item>
     </string-array>
 
-    <string-array name="event_rules">
-        <item>Music</item>
-        <item>Quiz</item>
-        <item>Lifestyle Event</item>
-        <item>Literary Arts</item>
-        <item>Theatre</item>
-        <item>Fine arts</item>
-        <item>Dance</item>
-        <item>Rock Bands</item>
+    <!--    Name String Arrays  -->
+    <string-array name="natraj_subevent_names">
+        <item>Bliss</item>
+        <item>Cut-a-rug</item>
+        <item>Ecstasy</item>
+        <item>Nritya</item>
     </string-array>
+
+    <string-array name="abhinay_subevent_names">
+        <item>Rangmanch</item>
+        <item>Asmita</item>
+        <item>Hullad</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_names">
+        <item>Battle of Bands</item>
+        <item>Instrumental Showdown</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_names">
+        <item>Sur</item>
+        <item>Sargam</item>
+        <item>Sanlayan</item>
+        <item>Kriti</item>
+        <item>Advaita</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_names">
+        <item>Design Elegante</item>
+        <item>Mr. KY</item>
+        <item>Miss KY</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_names">
+        <item>Rapid Fire</item>
+        <item>Spoil the Tees</item>
+        <item>Live Sketching</item>
+        <item>Vastra Shilp</item>
+        <item>Rangbaazi</item>
+        <item>Clay Modelling</item>
+        <item>Soap Carving</item>
+        <item>Ink it!</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_names">
+        <item>Scripturesque</item>
+        <item>Battlefront</item>
+        <item>Shipwreck Cove</item>
+        <item>The legend of Sir Speak-A-Lot</item>
+        <item>A Jesters Court</item>
+        <item>Vaad Vivaad</item>
+        <item>Alfaaz</item>
+        <item>Ashubhashan</item>
+        <item>What\'s the Word?</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_names">
+        <item>India Quiz</item>
+        <item>General Quiz</item>
+        <item>Sports Quiz</item>
+        <item>Biz-Tech Quiz</item>
+        <item>MELA Quiz</item>
+    </string-array>
+
+    <!--    Abouts String Arrays    -->
+    <string-array name="natraj_subevent_abouts">
+        <item>@string/bliss_about</item>
+        <item>@string/cut_a_rug_about</item>
+        <item>@string/ecstasy_about</item>
+        <item>@string/nritya_about</item>
+    </string-array>
+
+    <string-array name="abhinay_subevent_abouts">
+        <item>@string/rangmanch_about</item>
+        <item>@string/asmita_about</item>
+        <item>@string/hullad_about</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_abouts">
+        <item>@string/battle_of_bands_about</item>
+        <item>@string/instrumental_showdown_about</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_abouts">
+        <item>@string/sur_about</item>
+        <item>@string/sargam_about</item>
+        <item>@string/sanlayan_about</item>
+        <item>@string/kriti_about</item>
+        <item>@string/advaita_about</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_abouts">
+        <item>@string/design_elegante_about</item>
+        <item>@string/mr_ky_about</item>
+        <item>@string/miss_ky_about</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_abouts">
+        <item>@string/rapid_fire_about</item>
+        <item>@string/spoil_the_tees_about</item>
+        <item>@string/live_sketching_about</item>
+        <item>@string/vastra_shilp_about</item>
+        <item>@string/rangbaazi_about</item>
+        <item>@string/clay_modelling_about</item>
+        <item>@string/soap_carving_about</item>
+        <item>@string/ink_it_about</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_abouts">
+        <item>@string/scripturesque_about</item>
+        <item>@string/battlefront_about</item>
+        <item>@string/shipwreck_cove_about</item>
+        <item>@string/the_legend_of_sir_speak_a_lot_about</item>
+        <item>@string/a_jesters_court_about</item>
+        <item>@string/vaad_vivaad_about</item>
+        <item>@string/alfaaz_about</item>
+        <item>@string/ashubhashan_about</item>
+        <item>@string/whats_the_word_about</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_abouts">
+        <item>@string/india_quiz_about</item>
+        <item>@string/general_quiz_about</item>
+        <item>@string/sports_quiz_about</item>
+        <item>@string/biz_tech_about</item>
+        <item>@string/mela_about</item>
+    </string-array>
+
+    <!--    Rules String Arrays -->
+    <string-array name="natraj_subevent_rules">
+        <item>@string/bliss_rules</item>
+        <item>@string/cut_a_rug_rules</item>
+        <item>@string/ecstasy_rules</item>
+        <item>@string/nritya_rules</item>
+    </string-array>
+
+    <string-array name="abhinay_subevent_rules">
+        <item>@string/rangmanch_rules</item>
+        <item>@string/asmita_rules</item>
+        <item>@string/hullad_rules</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_rules">
+        <item>@string/battle_of_bands_rules</item>
+        <item>@string/instrumental_showdown_rules</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_rules">
+        <item>@string/sur_rules</item>
+        <item>@string/sargam_rules</item>
+        <item>@string/sanlayan_rules</item>
+        <item>@string/kriti_rules</item>
+        <item>@string/advaita_rules</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_rules">
+        <item>@string/design_elegante_rules</item>
+        <item>@string/mr_ky_rules</item>
+        <item>@string/miss_ky_rules</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_rules">
+        <item>@string/rapid_fire_rules</item>
+        <item>@string/spoil_the_tees_rules</item>
+        <item>@string/live_sketching_rules</item>
+        <item>@string/vastra_shilp_rules</item>
+        <item>@string/rangbaazi_rules</item>
+        <item>@string/clay_modelling_rules</item>
+        <item>@string/soap_carving_rules</item>
+        <item>@string/ink_it_rules</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_rules">
+        <item>@string/scripturesque_rules</item>
+        <item>@string/battlefront_rules</item>
+        <item>@string/shipwreck_cove_rules</item>
+        <item>@string/the_legend_of_sir_speak_a_lot_rules</item>
+        <item>@string/a_jesters_court_rules</item>
+        <item>@string/vaad_vivaad_rules</item>
+        <item>@string/alfaaz_rules</item>
+        <item>@string/ashubhashan_rules</item>
+        <item>@string/whats_the_word_rules</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_rules">
+        <item>@string/india_quiz_rules</item>
+        <item>@string/general_quiz_rules</item>
+        <item>@string/sports_quiz_rules</item>
+        <item>@string/biz_tech_rules</item>
+        <item>@string/mela_rules</item>
+    </string-array>
+
+    <!--    Short Description String Arrays -->
+    <string-array name="natraj_subevent_short_description">
+        <item>@string/bliss_short_description</item>
+        <item>@string/cut_a_rug_short_description</item>
+        <item>@string/ecstasy_short_description</item>
+        <item>@string/nritya_short_description</item>
+    </string-array>
+
+    <string-array name="abhinay_subevent_short_description">
+        <item>@string/rangmanch_short_description</item>
+        <item>@string/asmita_short_description</item>
+        <item>@string/hullad_short_description</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_short_description">
+        <item>@string/battle_of_bands_short_description</item>
+        <item>@string/instrumental_showdown_short_description</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_short_description">
+        <item>@string/sur_short_description</item>
+        <item>@string/sargam_short_description</item>
+        <item>@string/sanlayan_short_description</item>
+        <item>@string/kriti_short_description</item>
+        <item>@string/advaita_short_description</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_short_description">
+        <item>@string/design_elegante_short_description</item>
+        <item>@string/mr_ky_short_description</item>
+        <item>@string/miss_ky_short_description</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_short_description">
+        <item>@string/rapid_fire_short_description</item>
+        <item>@string/spoil_the_tees_short_description</item>
+        <item>@string/live_sketching_short_description</item>
+        <item>@string/vastra_shilp_short_description</item>
+        <item>@string/rangbaazi_short_description</item>
+        <item>@string/clay_modelling_short_description</item>
+        <item>@string/soap_carving_short_description</item>
+        <item>@string/ink_it_short_description</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_short_description">
+        <item>@string/scripturesque_short_description</item>
+        <item>@string/battlefront_short_description</item>
+        <item>@string/shipwreck_cove_short_description</item>
+        <item>@string/the_legend_of_sir_speak_a_lot_short_description</item>
+        <item>@string/a_jesters_court_short_description</item>
+        <item>@string/vaad_vivaad_short_description</item>
+        <item>@string/alfaaz_short_description</item>
+        <item>@string/ashubhashan_short_description</item>
+        <item>@string/whats_the_word_short_description</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_short_description">
+        <item>@string/india_quiz_short_description</item>
+        <item>@string/general_quiz_short_description</item>
+        <item>@string/sports_quiz_short_description</item>
+        <item>@string/biz_tech_short_description</item>
+        <item>@string/mela_short_description</item>
+    </string-array>
+
+    <!--    Image typed arrays  -->
+    <integer-array name="natraj_subevent_images">
+        <item>@drawable/bliss</item>
+        <item>@drawable/cut_a_rug</item>
+        <item>@drawable/ecstasy</item>
+        <item>@drawable/nritya</item>
+    </integer-array>
+
+    <integer-array name="abhinay_subevent_images">
+        <item>@drawable/events</item>
+        <item>@drawable/asmita</item>
+        <item>@drawable/hullad</item>
+    </integer-array>
+
+    <integer-array name="crosswindz_subevent_images">
+        <item>@drawable/events</item>
+        <item>@drawable/events</item>
+    </integer-array>
+
+    <integer-array name="bandish_subevent_images">
+        <item>@drawable/sur</item>
+        <item>@drawable/events</item>
+        <item>@drawable/sanlayan</item>
+        <item>@drawable/events</item>
+        <item>@drawable/advaita</item>
+    </integer-array>
+
+    <integer-array name="mirage_subevent_images">
+        <item>@drawable/events</item>
+        <item>@drawable/events</item>
+        <item>@drawable/miss_ky</item>
+    </integer-array>
+
+    <integer-array name="toolika_subevent_images">
+        <item>@drawable/rapid_fire</item>
+        <item>@drawable/spoil_the_tees</item>
+        <item>@drawable/events</item>
+        <item>@drawable/events</item>
+        <item>@drawable/events</item>
+        <item>@drawable/clay_modelling</item>
+        <item>@drawable/soap_carving</item>
+        <item>@drawable/events</item>
+    </integer-array>
+
+    <integer-array name="samwaad_subevent_images">
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/samwaad</item>
+    </integer-array>
+
+    <integer-array name="enquizta_subevent_images">
+        <item>@drawable/enquizta</item>
+        <item>@drawable/enquizta</item>
+        <item>@drawable/enquizta</item>
+        <item>@drawable/enquizta</item>
+        <item>@drawable/enquizta</item>
+    </integer-array>
 
 </resources>
