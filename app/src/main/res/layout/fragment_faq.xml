@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
-        android:scrollbars="vertical">
-
-    </android.support.v7.widget.RecyclerView>
+        android:scrollbarSize="2dp"
+        android:scrollbarThumbVertical="@color/colorAccent"
+        android:scrollbars="vertical" />
 
 </FrameLayout>

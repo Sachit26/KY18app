@@ -1,6 +1,5 @@
 package org.kashiyatra.kashiyatra18.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,15 +8,16 @@ import android.view.ViewGroup;
 
 import org.kashiyatra.kashiyatra18.R;
 
-public class DevTeamFragment extends Fragment {
+public class TeamFragment extends Fragment {
 
-    public DevTeamFragment() {
+
+    public TeamFragment() {
         // Required empty public constructor
     }
 
 
-    public static DevTeamFragment newInstance() {
-        DevTeamFragment fragment = new DevTeamFragment();
+    public static TeamFragment newInstance() {
+        TeamFragment fragment = new TeamFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -27,7 +27,8 @@ public class DevTeamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dev_team, container, false);
+        return inflater.inflate(R.layout.fragment_team, container, false);
+
     }
 
 }

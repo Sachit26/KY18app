@@ -30,15 +30,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.login.LoginManager;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import org.kashiyatra.kashiyatra18.fragments.AboutFragment;
-import org.kashiyatra.kashiyatra18.fragments.ContactUsFragment;
-import org.kashiyatra.kashiyatra18.fragments.DevTeamFragment;
 import org.kashiyatra.kashiyatra18.fragments.EventsFragment;
 import org.kashiyatra.kashiyatra18.fragments.FaqFragment;
+import org.kashiyatra.kashiyatra18.fragments.GalleryFragment;
 import org.kashiyatra.kashiyatra18.fragments.MapFragment;
 import org.kashiyatra.kashiyatra18.fragments.ScheduleFragment;
+import org.kashiyatra.kashiyatra18.fragments.TeamFragment;
 
 import static java.lang.Math.min;
 
@@ -46,6 +47,8 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     SharedPreferences prefs;
+    FloatingActionMenu materialDesignFAM;
+    FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton5, floatingActionButton6;
     private TabsPagerAdapter mTabsPagerAdapter;
     private ViewPager mViewPager;
     private AppBarLayout appBarLayout;
@@ -100,18 +103,48 @@ public class HomeActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
         //Set up NavigationView Header with User Info
-        ImageView dpView = headerView.findViewById(R.id.fb_dpview);
-        TextView nameView = headerView.findViewById(R.id.fb_username);
-        TextView emailView = headerView.findViewById(R.id.fb_email);
+        ImageView dpView = headerView.findViewById(R.id.profile_picture);
+        TextView nameView = headerView.findViewById(R.id.username);
+        TextView kyIdView = headerView.findViewById(R.id.ky_id);
+        TextView collegeView = headerView.findViewById(R.id.college_name);
 
 
         if (isLoggedIn) {
             byte[] decodedByte = Base64.decode(prefs.getString("profilePic", ""), 0);
             Bitmap dp = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
             dpView.setImageBitmap(dp);
-            nameView.setText(prefs.getString("fullName", ""));
-            emailView.setText(prefs.getString("email", ""));
+            nameView.setText(prefs.getString("fullName", "Guest user"));
+            kyIdView.setText(prefs.getString("ky_id", "guestuser@kashiyatra.org"));
+            collegeView.setText(prefs.getString("college", "IIT(BHU) Varanasi"));
+
         }
+
+        materialDesignFAM = findViewById(R.id.social_floating_menu);
+        floatingActionButton1 = findViewById(R.id.floating_facebook);
+        floatingActionButton2 = findViewById(R.id.floating_twitter);
+        floatingActionButton5 = findViewById(R.id.floating_instagram);
+        floatingActionButton6 = findViewById(R.id.floating_youtube);
+
+        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openURL("https://www.facebook.com/kashiyatra.IITBHU");
+            }
+        });
+        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openURL("https://twitter.com/KY_IITBHU");
+            }
+        });
+        floatingActionButton5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openURL("https://www.instagram.com/kashiyatra_iitbhu");
+            }
+        });
+        floatingActionButton6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openURL("https://www.youtube.com/kashiyatraiitbhu");
+            }
+        });
 
         mTabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
@@ -125,19 +158,24 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
-                if (tab.getPosition() == 3) {
+                if (tab.getPosition() == 4) {
                     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
                     appBarLayout.setExpanded(false, true);
+                    LoginActivity.animateElement(materialDesignFAM, 300, -1000);
                 }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                if (tab.getPosition() == 4) {
+                    materialDesignFAM.setVisibility(View.VISIBLE);
+                    LoginActivity.animateElement(materialDesignFAM, 300, -1000, 0);
+                }
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }
@@ -236,20 +274,20 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_events:
                 mViewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_location:
+            case R.id.nav_gallery:
                 mViewPager.setCurrentItem(3);
                 break;
-            case R.id.nav_faq:
+            case R.id.nav_location:
                 mViewPager.setCurrentItem(4);
+                break;
+            case R.id.nav_faq:
+                mViewPager.setCurrentItem(5);
                 break;
 //            case R.id.nav_sponsors:
 //                mViewPager.setCurrentItem(5);
 //                break;
-            case R.id.nav_contact_us:
+            case R.id.nav_team:
                 mViewPager.setCurrentItem(6);
-                break;
-            case R.id.nav_devteam:
-                mViewPager.setCurrentItem(7);
                 break;
             default:
                 break;
@@ -261,7 +299,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     void Logout() {
-        LoginManager.getInstance().logOut();
+//        LoginManager.getInstance().logOut();
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.commit();
@@ -269,6 +307,11 @@ public class HomeActivity extends AppCompatActivity
         startActivity(intent);
         overridePendingTransition(R.anim.pull_left, R.anim.push_right);
         finish();
+    }
+
+    public void openURL(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
@@ -288,15 +331,15 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return EventsFragment.newInstance();
                 case 3:
-                    return MapFragment.newInstance();
+                    return GalleryFragment.newInstance();
                 case 4:
+                    return MapFragment.newInstance();
+                case 5:
                     return FaqFragment.newInstance();
 //                case 5:
 //                    return SponsorsFragment.newInstance();
-                case 5:
-                    return ContactUsFragment.newInstance();
                 case 6:
-                    return DevTeamFragment.newInstance();
+                    return TeamFragment.newInstance();
                 default:
                     return AboutFragment.newInstance();
             }
@@ -317,17 +360,17 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return "EVENTS";
                 case 3:
-                    return "MAP";
+                    return "GALLERY";
                 case 4:
+                    return "MAP";
+                case 5:
                     return "FAQ";
 //                case 5:
 //                    return "SPONSORS";
-                case 5:
-                    return "CONTACT US";
                 case 6:
-                    return "DEVELOPERS";
+                    return "TEAM";
                 default:
-                    return "UPDATES";
+                    return "ABOUT";
             }
         }
 

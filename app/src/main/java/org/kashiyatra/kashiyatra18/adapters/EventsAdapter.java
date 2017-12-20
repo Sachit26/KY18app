@@ -40,7 +40,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.titleTextView.setText(mNames[position]);
         holder.descriptionTextView.setText(mDescriptions[position]);
         holder.backgroundImageView.setImageBitmap(mBackgrounds[position]);
-        holder.logoImageView.setImageBitmap(mLogos[position]);
+//        holder.logoImageView.setImageBitmap(mLogos[position]);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -53,7 +53,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             titleTextView = v.findViewById(R.id.event_title);
             descriptionTextView = v.findViewById(R.id.event_desc);
             backgroundImageView = v.findViewById(R.id.event_background);
-            logoImageView = v.findViewById(R.id.event_icon);
+//            logoImageView = v.findViewById(R.id.event_icon);
             mView = v;
         }
     }

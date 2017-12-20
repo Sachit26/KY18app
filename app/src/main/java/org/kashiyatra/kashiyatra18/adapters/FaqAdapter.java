@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.kashiyatra.kashiyatra18.R;
-import org.kashiyatra.kashiyatra18.utils.Faq;
-
-import java.util.ArrayList;
 
 
 public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
-    public ArrayList<Faq> mItems;
+    private String[] mQuestions;
+    private String[] mAnswers;
 
-    public FaqAdapter(ArrayList<Faq> items) {
-        mItems = items;
+    public FaqAdapter(String[] questions, String[] answers) {
+        mQuestions = questions;
+        mAnswers = answers;
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return mQuestions.length;
     }
 
     @Override
@@ -33,19 +32,17 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.questionTextView.setText(mItems.get(position).getQuestion());
-        holder.answerTextView.setText(mItems.get(position).getAnswer());
+        holder.questionTextView.setText(mQuestions[position]);
+        holder.answerTextView.setText(mAnswers[position]);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public View mView;
         TextView questionTextView, answerTextView;
 
-        public ViewHolder(View v) {
+        private ViewHolder(View v) {
             super(v);
             questionTextView = v.findViewById(R.id.question);
             answerTextView = v.findViewById(R.id.answer);
-            mView = v;
         }
     }
 }

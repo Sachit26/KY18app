@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 
 import org.kashiyatra.kashiyatra18.R;
 import org.kashiyatra.kashiyatra18.adapters.FaqAdapter;
-import org.kashiyatra.kashiyatra18.utils.Faq;
-
-import java.util.ArrayList;
 
 public class FaqFragment extends Fragment {
 
@@ -38,22 +35,14 @@ public class FaqFragment extends Fragment {
         RecyclerView.Adapter mFaqAdapter;
         RecyclerView.LayoutManager mFaqLayoutManager;
 
-        ArrayList<Faq> mItems = new ArrayList<>();
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
-        mItems.add(new Faq("Will you answer my question?", "Oh yes we will!"));
+        String[] questions = getResources().getStringArray(R.array.faq_questions);
+        String[] answers = getResources().getStringArray(R.array.faq_answers);
+
 
         mFaqRecycler = rootView.findViewById(R.id.faq_recycler_view);
         mFaqLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mFaqRecycler.setLayoutManager(mFaqLayoutManager);
-        mFaqAdapter = new FaqAdapter(mItems);
+        mFaqAdapter = new FaqAdapter(questions, answers);
         mFaqRecycler.setAdapter(mFaqAdapter);
 
         return rootView;

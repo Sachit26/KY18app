@@ -1,6 +1,7 @@
 package org.kashiyatra.kashiyatra18;
 
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -10,9 +11,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,24 +27,67 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URL;
+import java.util.regex.Pattern;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class LoginActivity extends AppCompatActivity {
+    private final int RC_SIGN_IN = 1234;
     private LoginButton fb_login_button;
-    private Button reg_later_button, reg_now_button;
+    private Button reg_later_button, reg_now_button, ky_login_button, submit_button;
+    private EditText ky_no_input;
+    private com.google.android.gms.common.SignInButton g_login_button;
     private CallbackManager callbackManager;
     private ProgressBar pb;
+    private int index = 0;
+    private String ky_no_text, contact_no;
+    private GoogleSignInClient mGoogleSignInClient;
+
+    static void animateElement(View element, int duration, int start_pos, int final_pos) {
+        ObjectAnimator translateElement = ObjectAnimator.ofFloat(element, "translationX", start_pos, final_pos);
+        translateElement.setInterpolator(new DecelerateInterpolator());
+        translateElement.setDuration(duration);
+        translateElement.start();
+    }
+
+    static void animateElement(View element, int duration, int pos) {
+        ObjectAnimator translateElement = ObjectAnimator.ofFloat(element, "translationX", pos);
+        translateElement.setInterpolator(new DecelerateInterpolator());
+        translateElement.setDuration(duration);
+        translateElement.start();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("Result Code", String.valueOf(resultCode));
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -53,33 +101,50 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         fb_login_button = findViewById(R.id.fb_login_button);
+        ky_login_button = findViewById(R.id.ky_login_button);
+        g_login_button = findViewById(R.id.google_login_button);
         reg_later_button = findViewById(R.id.register_later);
         reg_now_button = findViewById(R.id.register_now);
+        submit_button = findViewById(R.id.login_submit);
+        ky_no_input = findViewById(R.id.ky_number_input);
         pb = findViewById(R.id.progress);
         pb.setVisibility(View.GONE);
+
+        g_login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
         fb_login_button.setReadPermissions("email", "public_profile");
 
         fb_login_button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                fb_login_button.setEnabled(false);
-                reg_later_button.setEnabled(false);
                 GraphRequest request = GraphRequest.newMeRequest(
                         AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject jsonObject, GraphResponse response) {
                                 try {
-                                    pb.setVisibility(View.VISIBLE);
-                                    new getDetails_fb().execute(jsonObject);
+                                    String email = jsonObject.getString("email");
+                                    String profilePicUrl = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+                                    new getDetailsUsingEmail().execute(email, profilePicUrl);
+                                    LoginManager.getInstance().logOut();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id, first_name, last_name, email, picture.width(150).height(150)");
+                parameters.putString("fields", "id, first_name, last_name, email, picture");
                 request.setParameters(parameters);
                 request.executeAsync();
 
@@ -97,6 +162,58 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        ky_login_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                animateElement(ky_login_button, 300, -1000);
+                animateElement(fb_login_button, 300, -1000);
+                animateElement(g_login_button, 300, -1000);
+                ky_login_button.setVisibility(View.GONE);
+                fb_login_button.setVisibility(View.GONE);
+                g_login_button.setVisibility(View.GONE);
+
+                ky_no_input.setVisibility(View.VISIBLE);
+                animateElement(ky_no_input, 300, 1000, 0);
+                submit_button.setVisibility(View.VISIBLE);
+                animateElement(submit_button, 300, 1000, 0);
+
+                ky_no_input.setHint("KY0001 or KYCA0001");
+                index++;
+            }
+        });
+
+        submit_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (index == 1) {
+
+                    ky_no_text = ky_no_input.getText().toString().toUpperCase();
+                    Pattern pattern = Pattern.compile("KY[0-9]{4}");
+                    Pattern patternCa = Pattern.compile("KYCA[0-9]{4}");
+
+                    if (!pattern.matcher(ky_no_text).matches() && !patternCa.matcher(ky_no_text).matches()) {
+                        Toast.makeText(LoginActivity.this, "Invalid KY Number!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        animateElement(ky_no_input, 300, -1000);
+                        ky_no_input.setText(null);
+                        ky_no_input.setHint("Contact No.");
+                        ky_no_input.setInputType(InputType.TYPE_CLASS_PHONE);
+                        animateElement(ky_no_input, 300, 1000, 0);
+                        index = index + 1;
+                    }
+                } else {
+
+                    contact_no = ky_no_input.getText().toString();
+                    Pattern pattern = Pattern.compile("[0-9]{10}");
+
+                    if (!pattern.matcher(contact_no).matches()) {
+                        Toast.makeText(LoginActivity.this, "Not a Valid Contact Number!", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        new getDetails().execute(ky_no_text, contact_no);
+                    }
+                }
+            }
+        });
+
         reg_later_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startHomeActivity();
@@ -106,13 +223,37 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://www.kashiyatra.org/form/"));
+                intent.setAction(Intent.ACTION_VIEW)
+                        .addCategory(Intent.CATEGORY_BROWSABLE)
+                        .setData(Uri.parse("http://www.kashiyatra.org/form/"));
                 startActivity(intent);
             }
         });
 
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            String email = account.getEmail();
+            Uri dpUri = account.getPhotoUrl();
+            String proPicUrl = "";
+            if (dpUri != null) {
+                proPicUrl = dpUri.toString();
+            }
+            new getDetailsUsingEmail().execute(email, proPicUrl);
+            mGoogleSignInClient.signOut();
+            mGoogleSignInClient.revokeAccess();
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            if (e.getStatusCode() == GoogleSignInStatusCodes.SIGN_IN_FAILED) {
+                Toast.makeText(getApplicationContext(), "Please check internet connectivity", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public void startHomeActivity() {
@@ -122,56 +263,210 @@ public class LoginActivity extends AppCompatActivity {
         LoginActivity.this.finish();
     }
 
+
     @Override
-    public void onResume() {
-        super.onResume();
-        fb_login_button.setEnabled(true);
-        reg_later_button.setEnabled(true);
+    public void onBackPressed() {
+        if (index == 2) {
+            index--;
+            animateElement(ky_no_input, 300, 0, 1000);
+            ky_no_input.setText(ky_no_text);
+            ky_no_input.setHint("MI No. (mi-abc-123)");
+            ky_no_input.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            animateElement(ky_no_input, 300, -2000, 0);
+        } else if (index == 1) {
+            index--;
+            animateElement(ky_no_input, 300, 2000);
+            animateElement(submit_button, 300, 2000);
+            ky_no_input.setVisibility(View.GONE);
+            submit_button.setVisibility(View.GONE);
+
+            ky_login_button.setVisibility(View.VISIBLE);
+            fb_login_button.setVisibility(View.VISIBLE);
+            g_login_button.setVisibility(View.VISIBLE);
+
+            animateElement(fb_login_button, 300, 0);
+            animateElement(ky_login_button, 300, 0);
+            animateElement(g_login_button, 300, 0);
+        } else {
+            super.onBackPressed();
+        }
     }
 
-    private class getDetails_fb extends AsyncTask<JSONObject, Void, Void> {
+    private class getDetails extends AsyncTask<String, Void, JSONObject> {
 
         @Override
-        protected Void doInBackground(JSONObject... params) {
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pb.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... params) {
             try {
-                SharedPreferences prefs = getSharedPreferences(SplashActivity.storeUserDetails, MODE_PRIVATE);
-                final SharedPreferences.Editor prefEditor = prefs.edit();
-                JSONObject jsonObject = params[0];
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("secret", getResources().getString(R.string.app_secret));
+                jsonObject.put("ky_id", params[0]);
+                jsonObject.put("mobile_number", params[1]);
 
-                prefEditor.clear();
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("https://kashiyatra.herokuapp.com/api/mobile/login/")
+                        .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString()))
+                        .build();
+                Response response = client.newCall(request).execute();
+                String jsonData = response.body().string();
+                Log.e("json", jsonData);
+                Log.e("statusCode", String.valueOf(response.code()));
+                JSONObject jsonResponse = new JSONObject(jsonData);
+                jsonResponse.put("status_code", response.code());
 
-                String firstName = jsonObject.getString("first_name");
-                String lastName = jsonObject.getString("last_name");
-                String email = jsonObject.getString("email");
-
-                String profilePicUrl = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
-                Bitmap profilePic = BitmapFactory.decodeStream(new URL(profilePicUrl).openConnection().getInputStream());
+                Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 byte[] b = baos.toByteArray();
                 String propic = Base64.encodeToString(b, Base64.DEFAULT);
+                jsonResponse.put("profile_picture_string", propic);
 
-                prefEditor.putString("profilePic", propic);
-                prefEditor.putString("fullName", firstName + " " + lastName);
-                prefEditor.putString("email", email);
-                prefEditor.putBoolean("isLoggedIn", true);
-
-                prefEditor.apply();
-
+                return jsonResponse;
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
+            return new JSONObject();
+        }
 
-            return null;
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            super.onPostExecute(result);
+            pb.setVisibility(View.GONE);
+            int statusCode;
+            try {
+                statusCode = result.getInt("status_code");
+            } catch (JSONException je) {
+                statusCode = -1;
+            }
+            if (statusCode == 200) {
+                try {
+                    String name = result.getString("full_name");
+                    String email = result.getString("email");
+                    String college = result.getString("college");
+                    String proPicString = result.getString("profile_picture_string");
+                    String kyId;
+                    try {
+                        kyId = result.getString("ky_id");
+                    } catch (JSONException je) {
+                        kyId = result.getString("ca_id");
+                    }
+
+                    SharedPreferences prefs = getSharedPreferences(SplashActivity.storeUserDetails, MODE_PRIVATE);
+                    final SharedPreferences.Editor prefEditor = prefs.edit();
+                    prefEditor.putString("fullName", name);
+                    prefEditor.putString("email", email);
+                    prefEditor.putString("ky_id", kyId);
+                    prefEditor.putString("college", college);
+                    prefEditor.putString("profilePic", proPicString);
+                    prefEditor.putBoolean("isLoggedIn", true);
+                    prefEditor.commit();
+                    startHomeActivity();
+                } catch (JSONException je) {
+                    je.printStackTrace();
+                }
+
+            } else if (statusCode == 403) {
+                Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class getDetailsUsingEmail extends AsyncTask<String, Void, JSONObject> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pb.setVisibility(View.VISIBLE);
         }
 
         @Override
-        protected void onPostExecute(Void result) {
+        protected JSONObject doInBackground(String... params) {
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("secret", getResources().getString(R.string.app_secret));
+                jsonObject.put("email", params[0]);
+                jsonObject.put("profile_picture", params[1]);
+
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        // TODO: 19-Dec-17 here
+                        .url("https://kashiyatra.herokuapp.com/api/mobile/login/")
+                        .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString()))
+                        .build();
+                Response response = client.newCall(request).execute();
+                String jsonData = response.body().string();
+                Log.e("json", jsonData);
+                Log.e("statusCode", String.valueOf(response.code()));
+                JSONObject jsonResponse = new JSONObject(jsonData);
+                jsonResponse.put("status_code", response.code());
+
+                Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] b = baos.toByteArray();
+                String propic = Base64.encodeToString(b, Base64.DEFAULT);
+                jsonResponse.put("profile_picture_string", propic);
+
+                return jsonResponse;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return new JSONObject();
+        }
+
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
             super.onPostExecute(result);
             pb.setVisibility(View.GONE);
-            startHomeActivity();
-            finish();
+            int statusCode;
+            try {
+                statusCode = result.getInt("status_code");
+            } catch (JSONException je) {
+                statusCode = -1;
+            }
+            if (statusCode == 200) {
+                Toast.makeText(getApplicationContext(), "Okay", Toast.LENGTH_SHORT).show();
+                try {
+                    String name = result.getString("full_name");
+                    String email = result.getString("email");
+                    String college = result.getString("college");
+                    String proPicString = result.getString("profile_picture_string");
+                    String kyId;
+                    try {
+                        kyId = result.getString("ky_id");
+                    } catch (JSONException je) {
+                        kyId = result.getString("ca_id");
+                    }
+
+                    SharedPreferences prefs = getSharedPreferences(SplashActivity.storeUserDetails, MODE_PRIVATE);
+                    final SharedPreferences.Editor prefEditor = prefs.edit();
+                    prefEditor.putString("fullName", name);
+                    prefEditor.putString("email", email);
+                    prefEditor.putString("ky_id", kyId);
+                    prefEditor.putString("college", college);
+                    prefEditor.putString("profilePic", proPicString);
+                    prefEditor.putBoolean("isLoggedIn", true);
+                    prefEditor.commit();
+                    startHomeActivity();
+                } catch (JSONException je) {
+                    je.printStackTrace();
+                }
+
+            } else if (statusCode == 403) {
+                Toast.makeText(LoginActivity.this, "Looks like you have not registered for KY. Please register first.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

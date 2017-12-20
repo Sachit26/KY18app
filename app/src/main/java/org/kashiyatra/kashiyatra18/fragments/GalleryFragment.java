@@ -1,5 +1,6 @@
 package org.kashiyatra.kashiyatra18.fragments;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,16 +9,15 @@ import android.view.ViewGroup;
 
 import org.kashiyatra.kashiyatra18.R;
 
-public class ContactUsFragment extends Fragment {
+public class GalleryFragment extends Fragment {
 
-
-    public ContactUsFragment() {
+    public GalleryFragment() {
         // Required empty public constructor
     }
 
 
-    public static ContactUsFragment newInstance() {
-        ContactUsFragment fragment = new ContactUsFragment();
+    public static GalleryFragment newInstance() {
+        GalleryFragment fragment = new GalleryFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -27,8 +27,7 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false);
-
+        return inflater.inflate(R.layout.fragment_gallery, container, false);
     }
 
 }

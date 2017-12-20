@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "118192464795",
+    "project_id": "kashiyatra-18-1506358116122"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118192464795:android:98a2141e119e19db",
+        "android_client_info": {
+          "package_name": "org.kashiyatra.kashiyatra18"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118192464795-vecuni1viul67isji8rntokroivc9t6p.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "118192464795-q5h4g7r4b57dmhrq2mnf5a3vpelbh5sv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.kashiyatra.kashiyatra18",
+            "certificate_hash": "aeb31e618e3be77aff83c4f407204a1e4693b8f8"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTTCC2bUScwl_ytTHKCoc4XNLvCtEti08"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

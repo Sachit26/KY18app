@@ -45,14 +45,14 @@ public class EventsFragment extends Fragment {
         String[] names = getResources().getStringArray(R.array.event_names);
         String[] descriptions = getResources().getStringArray(R.array.event_descriptions);
         Bitmap backgrounds[] = {
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mic)
+                BitmapFactory.decodeResource(getResources(), R.drawable.bandish),
+                BitmapFactory.decodeResource(getResources(), R.drawable.enquizta),
+                BitmapFactory.decodeResource(getResources(), R.drawable.mirage),
+                BitmapFactory.decodeResource(getResources(), R.drawable.samwaad),
+                BitmapFactory.decodeResource(getResources(), R.drawable.abhinay),
+                BitmapFactory.decodeResource(getResources(), R.drawable.toolika),
+                BitmapFactory.decodeResource(getResources(), R.drawable.natraj),
+                BitmapFactory.decodeResource(getResources(), R.drawable.crosswindz)
         };
 
         Bitmap icons[] = {

@@ -40,11 +40,11 @@ public class SubeventsAdapter extends RecyclerView.Adapter<SubeventsAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public View mView;
         TextView titleTextView;
         TextView descTextView;
+        private View mView;
 
-        public ViewHolder(View v) {
+        private ViewHolder(View v) {
             super(v);
             titleTextView = v.findViewById(R.id.subevent_title);
             descTextView = v.findViewById(R.id.subevent_desc);
