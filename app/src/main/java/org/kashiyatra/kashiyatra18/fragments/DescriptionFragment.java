@@ -85,6 +85,9 @@ public class DescriptionFragment extends Fragment {
             case 7:
                 description = getResources().getStringArray(R.array.crosswindz_subevent_abouts)[mSubeventPosition];
                 break;
+            case 8:
+                description = getResources().getStringArray(R.array.xtasy_subevent_abouts)[mSubeventPosition];
+                break;
             default:
                 description = getResources().getStringArray(R.array.bandish_subevent_abouts)[mSubeventPosition];
                 break;

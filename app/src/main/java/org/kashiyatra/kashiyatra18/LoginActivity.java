@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -135,8 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onCompleted(JSONObject jsonObject, GraphResponse response) {
                                 try {
                                     String email = jsonObject.getString("email");
-                                    String profilePicUrl = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
-                                    new getDetailsUsingEmail().execute(email, profilePicUrl);
+                                    new getDetailsUsingEmail(email).execute();
                                     LoginManager.getInstance().logOut();
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -208,7 +206,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Not a Valid Contact Number!", Toast.LENGTH_SHORT).show();
                     } else {
 
-                        new getDetails().execute(ky_no_text, contact_no);
+                        new getDetails(ky_no_text, contact_no).execute();
                     }
                 }
             }
@@ -222,10 +220,7 @@ public class LoginActivity extends AppCompatActivity {
         reg_now_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW)
-                        .addCategory(Intent.CATEGORY_BROWSABLE)
-                        .setData(Uri.parse("http://www.kashiyatra.org/form/"));
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -238,12 +233,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Signed in successfully, show authenticated UI.
             String email = account.getEmail();
-            Uri dpUri = account.getPhotoUrl();
-            String proPicUrl = "";
-            if (dpUri != null) {
-                proPicUrl = dpUri.toString();
-            }
-            new getDetailsUsingEmail().execute(email, proPicUrl);
+            new getDetailsUsingEmail(email).execute();
             mGoogleSignInClient.signOut();
             mGoogleSignInClient.revokeAccess();
 
@@ -252,6 +242,8 @@ public class LoginActivity extends AppCompatActivity {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             if (e.getStatusCode() == GoogleSignInStatusCodes.SIGN_IN_FAILED) {
                 Toast.makeText(getApplicationContext(), "Please check internet connectivity", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Error code " + String.valueOf(e.getStatusCode()), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -292,7 +284,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private class getDetails extends AsyncTask<String, Void, JSONObject> {
+    private class getDetails extends AsyncTask<Void, Void, JSONObject> {
+
+        private String mKyId, mMobileNumber;
+
+        getDetails(String kyId, String mobileNumber) {
+            mKyId = kyId;
+            mMobileNumber = mobileNumber;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -301,12 +300,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        protected JSONObject doInBackground(String... params) {
+        protected JSONObject doInBackground(Void... params) {
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("secret", getResources().getString(R.string.app_secret));
-                jsonObject.put("ky_id", params[0]);
-                jsonObject.put("mobile_number", params[1]);
+                jsonObject.put("ky_id", mKyId);
+                jsonObject.put("mobile_number", mMobileNumber);
 
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
@@ -316,16 +315,22 @@ public class LoginActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 String jsonData = response.body().string();
                 Log.e("json", jsonData);
-                Log.e("statusCode", String.valueOf(response.code()));
-                JSONObject jsonResponse = new JSONObject(jsonData);
-                jsonResponse.put("status_code", response.code());
+                Log.e("status_code", String.valueOf(response.code()));
+                JSONObject jsonResponse = new JSONObject();
 
-                Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] b = baos.toByteArray();
-                String propic = Base64.encodeToString(b, Base64.DEFAULT);
-                jsonResponse.put("profile_picture_string", propic);
+                try {
+                    jsonResponse = new JSONObject(jsonData);
+                    Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    byte[] b = baos.toByteArray();
+                    String propic = Base64.encodeToString(b, Base64.DEFAULT);
+                    jsonResponse.put("profile_picture_string", propic);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                jsonResponse.put("status_code", response.code());
 
                 return jsonResponse;
             } catch (Exception e) {
@@ -370,6 +375,7 @@ public class LoginActivity extends AppCompatActivity {
                     startHomeActivity();
                 } catch (JSONException je) {
                     je.printStackTrace();
+                    Toast.makeText(LoginActivity.this, "Invalid Server Response", Toast.LENGTH_SHORT).show();
                 }
 
             } else if (statusCode == 403) {
@@ -380,7 +386,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private class getDetailsUsingEmail extends AsyncTask<String, Void, JSONObject> {
+    private class getDetailsUsingEmail extends AsyncTask<Void, Void, JSONObject> {
+
+        private String mEmail;
+
+        getDetailsUsingEmail(String email) {
+            mEmail = email;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -389,36 +401,43 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        protected JSONObject doInBackground(String... params) {
+        protected JSONObject doInBackground(Void... params) {
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("secret", getResources().getString(R.string.app_secret));
-                jsonObject.put("email", params[0]);
-                jsonObject.put("profile_picture", params[1]);
+                jsonObject.put("email", mEmail);
 
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
-                        // TODO: 19-Dec-17 here
-                        .url("https://kashiyatra.herokuapp.com/api/mobile/login/")
+                        .url("https://kashiyatra.herokuapp.com/api/mobile/login/social/")
                         .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString()))
                         .build();
                 Response response = client.newCall(request).execute();
                 String jsonData = response.body().string();
-                Log.e("json", jsonData);
-                Log.e("statusCode", String.valueOf(response.code()));
-                JSONObject jsonResponse = new JSONObject(jsonData);
-                jsonResponse.put("status_code", response.code());
+                Log.e("json", "json" + jsonData);
+                Log.e("status_code", String.valueOf(response.code()));
+                JSONObject jsonResponse = new JSONObject();
 
-                Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] b = baos.toByteArray();
-                String propic = Base64.encodeToString(b, Base64.DEFAULT);
-                jsonResponse.put("profile_picture_string", propic);
+                try {
+                    jsonResponse = new JSONObject(jsonData);
+                    Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    byte[] b = baos.toByteArray();
+                    String propic = Base64.encodeToString(b, Base64.DEFAULT);
+                    jsonResponse.put("profile_picture_string", propic);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("response_error", e.toString());
+                }
+
+                jsonResponse.put("status_code", response.code());
 
                 return jsonResponse;
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.e("ResponseError", e.toString());
+
             }
             return new JSONObject();
         }
@@ -435,7 +454,6 @@ public class LoginActivity extends AppCompatActivity {
                 statusCode = -1;
             }
             if (statusCode == 200) {
-                Toast.makeText(getApplicationContext(), "Okay", Toast.LENGTH_SHORT).show();
                 try {
                     String name = result.getString("full_name");
                     String email = result.getString("email");
@@ -447,6 +465,7 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (JSONException je) {
                         kyId = result.getString("ca_id");
                     }
+
 
                     SharedPreferences prefs = getSharedPreferences(SplashActivity.storeUserDetails, MODE_PRIVATE);
                     final SharedPreferences.Editor prefEditor = prefs.edit();
@@ -464,6 +483,9 @@ public class LoginActivity extends AppCompatActivity {
 
             } else if (statusCode == 403) {
                 Toast.makeText(LoginActivity.this, "Looks like you have not registered for KY. Please register first.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                intent.putExtra("email", mEmail);
+                startActivity(intent);
             } else {
                 Toast.makeText(LoginActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }

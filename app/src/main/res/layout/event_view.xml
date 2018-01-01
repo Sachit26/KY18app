@@ -50,7 +50,6 @@
             android:shadowRadius="10"
             android:text="Description"
             android:textAlignment="center"
-            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/desc_text_size" />
     </LinearLayout>

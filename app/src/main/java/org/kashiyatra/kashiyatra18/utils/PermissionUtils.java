@@ -82,7 +82,7 @@ public abstract class PermissionUtils {
          */
         public static PermissionDeniedDialog newInstance(boolean finishActivity) {
             Bundle arguments = new Bundle();
-            arguments.putBoolean(ARGUMENT_FINISH_ACTIVITY, finishActivity);
+//            arguments.putBoolean(ARGUMENT_FINISH_ACTIVITY, finishActivity);
 
             PermissionDeniedDialog dialog = new PermissionDeniedDialog();
             dialog.setArguments(arguments);
@@ -92,7 +92,7 @@ public abstract class PermissionUtils {
         @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            mFinishActivity = getArguments().getBoolean(ARGUMENT_FINISH_ACTIVITY);
+//            mFinishActivity = getArguments().getBoolean(ARGUMENT_FINISH_ACTIVITY);
 
             return new AlertDialog.Builder(getActivity())
                     .setMessage(R.string.location_permission_denied)
@@ -103,9 +103,9 @@ public abstract class PermissionUtils {
         @Override
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
-            if (mFinishActivity) {
-                getActivity().finish();
-            }
+//            if (mFinishActivity) {
+//                getActivity().finish();
+//            }
         }
     }
 
@@ -173,9 +173,9 @@ public abstract class PermissionUtils {
         @Override
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
-            if (mFinishActivity) {
-                getActivity().finish();
-            }
+//            if (mFinishActivity) {
+//                getActivity().finish();
+//            }
         }
     }
 }

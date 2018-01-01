@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "118192464795",
-    "project_id": "kashiyatra-18-1506358116122"
+    "firebase_url": "https://kashiyatra-18-1506358116122.firebaseio.com",
+    "project_id": "kashiyatra-18-1506358116122",
+    "storage_bucket": "kashiyatra-18-1506358116122.appspot.com"
   },
   "client": [
     {
@@ -12,6 +14,10 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "118192464795-n7rmgasmg8aql7hc39dnmuu2c2i8g593.apps.googleusercontent.com",
+          "client_type": 3
+        },
         {
           "client_id": "118192464795-vecuni1viul67isji8rntokroivc9t6p.apps.googleusercontent.com",
           "client_type": 3
@@ -35,11 +41,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118192464795-n7rmgasmg8aql7hc39dnmuu2c2i8g593.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

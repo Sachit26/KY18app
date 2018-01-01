@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:fillViewport="true"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="REGISTRATION" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Sai Sumanth" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-9493690659" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Kalpesh Bansal" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-7233013288" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="EVENTS" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Prakhar Dhawan" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-7080486918" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Arunoday" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-8756353318" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="PRONITES" />
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Sanprit Nayan" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-8090975639" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

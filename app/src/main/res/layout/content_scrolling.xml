@@ -30,7 +30,7 @@
                 android:contentDescription="@null"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sky"
+                android:src="@drawable/logobg"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="1" />
 
@@ -39,8 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
-                android:paddingEnd="50dp"
-                android:paddingStart="50dp"
+                android:paddingEnd="75dp"
+                android:paddingStart="75dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_collapseMode="parallax"
@@ -51,10 +51,10 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/pumpkin"
+                android:scaleType="fitEnd"
+                android:src="@drawable/mist"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.2" />
+                app:layout_collapseParallaxMultiplier="0" />
 
             <ImageView
                 android:id="@+id/coverview"
@@ -98,6 +98,7 @@
         app:tabIndicatorColor="@color/colorAccent"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/tab_text"
         app:tabTextColor="@color/white" />
 
     <android.support.v4.view.ViewPager
@@ -130,6 +131,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:src="@drawable/ic_fb"
+            fab:fab_colorNormal="#3b5998"
+            fab:fab_colorPressed="@color/colorAccent"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -137,6 +140,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_twitter"
+            fab:fab_colorNormal="#0084b4"
+            fab:fab_colorPressed="@color/colorAccent"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -144,6 +149,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_instagram"
+            fab:fab_colorNormal="#bc2a8d"
+            fab:fab_colorPressed="@color/colorAccent"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -151,6 +158,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_youtube"
+            fab:fab_colorNormal="#ff0000"
+            fab:fab_colorPressed="@color/colorAccent"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

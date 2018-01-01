@@ -85,6 +85,9 @@ public class RulesFragment extends Fragment {
             case 7:
                 rules = getResources().getStringArray(R.array.crosswindz_subevent_rules)[mSubeventPosition];
                 break;
+            case 8:
+                rules = getResources().getStringArray(R.array.xtasy_subevent_rules)[mSubeventPosition];
+                break;
             default:
                 rules = getResources().getStringArray(R.array.bandish_subevent_rules)[mSubeventPosition];
                 break;

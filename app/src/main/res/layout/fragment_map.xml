@@ -9,7 +9,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        map:cameraZoom="14"
+        map:cameraZoom="17"
         tools:context="org.kashiyatra.kashiyatra18.fragments.MapFragment" />
 
     <com.github.clans.fab.FloatingActionMenu
@@ -55,7 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:src="@drawable/ic_bed_24dp"
+            android:src="@drawable/ic_hostel"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Hostels"
             fab:fab_size="mini" />
 
@@ -63,7 +65,9 @@
             android:id="@+id/filter_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_star_24dp"
+            android:src="@drawable/ic_event"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Event Venues"
             fab:fab_size="mini" />
 
@@ -71,7 +75,9 @@
             android:id="@+id/filter_pronite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_music_24dp"
+            android:src="@drawable/ic_pronite"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="ProNite Venues"
             fab:fab_size="mini" />
 
@@ -79,7 +85,9 @@
             android:id="@+id/filter_atm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_atm_24dp"
+            android:src="@drawable/ic_atm"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="ATMs"
             fab:fab_size="mini" />
 
@@ -87,7 +95,9 @@
             android:id="@+id/filter_reg_desk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_clipboard_24dp"
+            android:src="@drawable/ic_register"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Registration Desk"
             fab:fab_size="mini" />
 

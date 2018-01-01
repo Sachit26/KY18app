@@ -105,6 +105,10 @@ public class EventActivity extends AppCompatActivity {
                 subeventName = getResources().getStringArray(R.array.crosswindz_subevent_names)[subeventPosition];
                 eventBanner = getResources().obtainTypedArray(R.array.crosswindz_subevent_images).getResourceId(subeventPosition, -1);
                 break;
+            case 8:
+                subeventName = getResources().getStringArray(R.array.xtasy_subevent_names)[subeventPosition];
+                eventBanner = getResources().obtainTypedArray(R.array.xtasy_subevent_images).getResourceId(subeventPosition, -1);
+                break;
             default:
                 subeventName = getResources().getStringArray(R.array.bandish_subevent_names)[subeventPosition];
                 eventBanner = getResources().obtainTypedArray(R.array.bandish_subevent_images).getResourceId(subeventPosition, -1);

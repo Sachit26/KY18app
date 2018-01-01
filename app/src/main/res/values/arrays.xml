@@ -9,17 +9,31 @@
         <item>Toolika</item>
         <item>Natraj</item>
         <item>Crosswindz</item>
+        <item>Xtasy</item>
     </string-array>
+
+    <integer-array name="event_backgrounds">
+        <item>@drawable/bandish</item>
+        <item>@drawable/enquizta</item>
+        <item>@drawable/mirage</item>
+        <item>@drawable/samwaad</item>
+        <item>@drawable/abhinay</item>
+        <item>@drawable/toolika</item>
+        <item>@drawable/natraj</item>
+        <item>@drawable/crosswindz</item>
+        <item>@drawable/xtasy</item>
+    </integer-array>
 
     <string-array name="event_descriptions">
         <item>Music</item>
         <item>Quiz</item>
-        <item>Lifestyle Event</item>
+        <item>Lifestyle</item>
         <item>Literary Arts</item>
         <item>Theatre</item>
         <item>Fine arts</item>
         <item>Dance</item>
         <item>Rock Bands</item>
+        <item>Media</item>
     </string-array>
 
     <!--    Name String Arrays  -->
@@ -38,7 +52,6 @@
 
     <string-array name="crosswindz_subevent_names">
         <item>Battle of Bands</item>
-        <item>Instrumental Showdown</item>
     </string-array>
 
     <string-array name="bandish_subevent_names">
@@ -86,6 +99,10 @@
         <item>MELA Quiz</item>
     </string-array>
 
+    <string-array name="xtasy_subevent_names">
+        <item>Third Eye</item>
+    </string-array>
+
     <!--    Abouts String Arrays    -->
     <string-array name="natraj_subevent_abouts">
         <item>@string/bliss_about</item>
@@ -102,7 +119,7 @@
 
     <string-array name="crosswindz_subevent_abouts">
         <item>@string/battle_of_bands_about</item>
-        <item>@string/instrumental_showdown_about</item>
+        <!--<item>@string/instrumental_showdown_about</item>-->
     </string-array>
 
     <string-array name="bandish_subevent_abouts">
@@ -150,6 +167,10 @@
         <item>@string/mela_about</item>
     </string-array>
 
+    <string-array name="xtasy_subevent_abouts">
+        <item>@string/third_eye_about</item>
+    </string-array>
+
     <!--    Rules String Arrays -->
     <string-array name="natraj_subevent_rules">
         <item>@string/bliss_rules</item>
@@ -166,7 +187,6 @@
 
     <string-array name="crosswindz_subevent_rules">
         <item>@string/battle_of_bands_rules</item>
-        <item>@string/instrumental_showdown_rules</item>
     </string-array>
 
     <string-array name="bandish_subevent_rules">
@@ -214,6 +234,10 @@
         <item>@string/mela_rules</item>
     </string-array>
 
+    <string-array name="xtasy_subevent_rules">
+        <item>@string/third_eye_rules</item>
+    </string-array>
+
     <!--    Short Description String Arrays -->
     <string-array name="natraj_subevent_short_description">
         <item>@string/bliss_short_description</item>
@@ -230,7 +254,6 @@
 
     <string-array name="crosswindz_subevent_short_description">
         <item>@string/battle_of_bands_short_description</item>
-        <item>@string/instrumental_showdown_short_description</item>
     </string-array>
 
     <string-array name="bandish_subevent_short_description">
@@ -278,6 +301,10 @@
         <item>@string/mela_short_description</item>
     </string-array>
 
+    <string-array name="xtasy_subevent_short_description">
+        <item>@string/third_eye_short_description</item>
+    </string-array>
+
     <!--    Image typed arrays  -->
     <integer-array name="natraj_subevent_images">
         <item>@drawable/bliss</item>
@@ -287,14 +314,13 @@
     </integer-array>
 
     <integer-array name="abhinay_subevent_images">
-        <item>@drawable/events</item>
+        <item>@drawable/rangmanch</item>
         <item>@drawable/asmita</item>
         <item>@drawable/hullad</item>
     </integer-array>
 
     <integer-array name="crosswindz_subevent_images">
-        <item>@drawable/events</item>
-        <item>@drawable/events</item>
+        <item>@drawable/battle_of_bands</item>
     </integer-array>
 
     <integer-array name="bandish_subevent_images">
@@ -314,75 +340,250 @@
     <integer-array name="toolika_subevent_images">
         <item>@drawable/rapid_fire</item>
         <item>@drawable/spoil_the_tees</item>
+        <item>@drawable/live_sketching</item>
         <item>@drawable/events</item>
-        <item>@drawable/events</item>
-        <item>@drawable/events</item>
+        <item>@drawable/rangbaazi</item>
         <item>@drawable/clay_modelling</item>
         <item>@drawable/soap_carving</item>
-        <item>@drawable/events</item>
+        <item>@drawable/ink_it</item>
     </integer-array>
 
     <integer-array name="samwaad_subevent_images">
-        <item>@drawable/speaker</item>
-        <item>@drawable/samwaad</item>
+        <item>@drawable/scripturesque</item>
+        <item>@drawable/battlefront</item>
         <item>@drawable/shipwreck_cove</item>
-        <item>@drawable/samwaad</item>
-        <item>@drawable/samwaad</item>
-        <item>@drawable/samwaad</item>
-        <item>@drawable/samwaad</item>
-        <item>@drawable/samwaad</item>
-        <item>@drawable/samwaad</item>
+        <item>@drawable/alfaaz</item>
+        <item>@drawable/a_jesters_court</item>
+        <item>@drawable/scripturesque</item>
+        <item>@drawable/alfaaz</item>
+        <item>@drawable/ashubhashan</item>
+        <item>@drawable/whats_the_word</item>
     </integer-array>
 
     <integer-array name="enquizta_subevent_images">
-        <item>@drawable/enquizta</item>
-        <item>@drawable/enquizta</item>
-        <item>@drawable/enquizta</item>
+        <item>@drawable/india_quiz</item>
+        <item>@drawable/general_quiz</item>
+        <item>@drawable/sports_quiz</item>
         <item>@drawable/biz_tech</item>
-        <item>@drawable/enquizta</item>
+        <item>@drawable/mela_quiz</item>
+    </integer-array>
+
+    <integer-array name="xtasy_subevent_images">
+        <item>@drawable/third_eye</item>
     </integer-array>
 
     <!--    FAQs    -->
     <string-array name="faq_questions">
         <item>When is the next edition of Kashiyatra?</item>
-        <item>How do I register for Kashiyatra’18?</item>
-        <item>Are on-spot registrations allowed during the fest?</item>
-        <item>What type of accommodation will be provided?</item>
-        <item>Does accommodation fee include the food facility as well?</item>
-        <item>What is the artist line-up?</item>
-        <item>Can I take photos during Pronites?</item>
-        <item>Are there ATMs available inside?</item>
-        <item>How can I participate in Kashiyatra?</item>
+        <item>How can I participate in Kashiyatra\'18?</item>
         <item>What is the significance of the KY ID?</item>
+        <item>Where should I report after reaching IIT (BHU) Varanasi?</item>
+        <item>Are on-spot registrations allowed during the fest?</item>
         <item>How can I be allowed to participate at a given event venue?</item>
         <item>What if I do not have a Registration ID before coming to the festival?</item>
         <item>Does every member of the team need to be present at the Registration Desk during Event Registration?</item>
         <item>Do I have to register for Prelims and Finals separately?</item>
         <item>Do I have to register at the Registration Desk if I already registered online?</item>
-        <item>How can the official Kashiyatra app help in improving KY experience?</item>
-        <item>Where should I report after reaching IIT (BHU) Varanasi?</item>
+        <item>What type of accommodation will be provided?</item>
         <item>Few members of my team will be arriving late, what to do about their accommodation?</item>
+        <item>Does accommodation fee include the food facility as well?</item>
+        <item>How can the official Kashiyatra app help in improving KY experience?</item>
+        <item>What is the artist line-up?</item>
+        <item>Can I take photos during Pronites?</item>
+        <item>Are there ATMs available inside?</item>
     </string-array>
 
     <string-array name="faq_answers">
         <item>Kashiyatra 2018 will be held from 19th to 21st January. Gear up for the 3 most awesome days of 2018!</item>
-        <item>Go to the Register tab to get your KY ID.</item>
-        <item>On-spot registrations may or may not be allowed depending on the number of already registered participants. We suggest you register online as soon as possible to prevent any unforeseen circumstances.</item>
-        <item>Accommodation will be provided to boys and girls in well secured separate residential complexes on the campus of IIT(BHU) Varanasi.</item>
-        <item>No. The accommodation charges don’t include food. However, you can take food in the hostel mess @100/- for all the 3 meals of the day. Also, there will be food courts operational at the events venue during Kashiyatra to cater to the food requirements.</item>
-        <item>Stay tuned to our Official Facebook page.</item>
-        <item>Preferably not. You just stood in a huge queue to see it live, why ruin it just to show it to others!</item>
-        <item>Yes, ATMs are available.</item>
-        <item>To participate in Kashiyatra, you need to register in kashiyatra.org/form/ first.</item>
+        <item>To participate in Kashiyatra\'18, you need to register first. For each event you want to participate you need to register separately.</item>
         <item>The first step which you need to do to participate in Kashiyatra is to generate your unique “KY ID”. This “KY ID” allows you to register yourself and your team for the different events of Kashiyatra. Also, during your participation at IIT (BHU) Varanasi, you will be asked to show your KY ID.</item>
+        <item>Our Registration Desk will be set up at Limbdi Hostel. You need to come there and go through the necessary procedure to avail accommodation at IIT (BHU) Varanasi.</item>
+        <item>On-spot registrations may or may not be allowed depending on the number of already registered participants. We suggest you register online as soon as possible to prevent any unforeseen circumstances.</item>
         <item>Each participant must show his/her “Identity Card” which you have received from the “Registration Desk”. This ID card has a unique number which is required before you finally participate in your event. Also, the event you want to take part in should be mentioned on your ID card by the coordinator at the Registration Desk.</item>
         <item>You can go to the “Registration Desk” to get your Registration ID well before the start of your interested event. But doing this ensures that you are opting for “On-Spot Registration” which does not guarantee whether you will be getting a slot to participate or not. It is strongly recommended that you register only before coming to the festival to fix your participation.</item>
         <item>No. The Team Leader can register the events on behalf of all members of his/her team. In fact, we appreciate you not overcrowding in front of the registration desk.</item>
         <item>No. You need to register for each event only once.</item>
         <item>Yes. Registration at the Registration Desk is mandatory for each participant. Without registering at the Registration Desk or without KY ID Card, a participant will not be allowed to participate in any event.</item>
-        <item>After downloading the app, it will show you the detailed locations of the allotted hostels and the respective event venues, with the google maps integration facility you have the chance to explore IIT (BHU) Varanasi and Kashiyatra like never before.</item>
-        <item>Our Registration Desk will be set up at Limbdi Hostel. You need to come there and go through the necessary procedure to avail accommodation at IIT (BHU) Varanasi.</item>
+        <item>Accommodation will be provided to boys and girls in well secured separate residential complexes on the campus of IIT(BHU) Varanasi.</item>
         <item>No issues. You can take accommodation for those members as and when they arrive, or you can book their accommodation beforehand.</item>
+        <item>No. The accommodation charges don\'t include food. However, you can take food in the hostel mess @100/- for all the 3 meals of the day. Also, there will be food courts operational at the events venue during Kashiyatra to cater to the food requirements.</item>
+        <item>After downloading the app, it will show you the detailed locations of the allotted hostels and the respective event venues, with the google maps integration facility you have the chance to explore IIT (BHU) Varanasi and Kashiyatra like never before.</item>
+        <item>Stay tuned to our Official Facebook page.</item>
+        <item>Preferably not. You just stood in a huge queue to see it live, why ruin it just to show it to others!</item>
+        <item>Yes, ATMs are available.</item>
+    </string-array>
+
+    <string-array name="team_names">
+        <item>Kalyan Reddy</item>
+        <item>Sagar Jain</item>
+        <item>Pranu Palakurthy</item>
+        <item>Ronith Reddy</item>
+        <item>Ashutosh P. Pandey</item>
+        <item>Yogesh Gutta</item>
+        <item>Prakarsh Saxena</item>
+        <item>Arun Suri</item>
+        <item>Prachet Mishra</item>
+        <item>Rajesh Kumar Jha</item>
+        <item>Sai Sumanth</item>
+        <item>Kalpesh Bansal</item>
+        <item>Sanprit Nayan</item>
+        <item>Deepesh K.Meena</item>
+        <item>Sumit Nayak</item>
+        <item>Anuj</item>
+        <item>Parth Sharma</item>
+        <item>Kanvar Kohli</item>
+        <item>Prakhar Dhawan</item>
+        <item>Manda Arunoday</item>
+        <item>Nikhil Raja</item>
+        <item>Sagar Singh</item>
+        <item>Rishabh Agrahari</item>
+        <item>Arjun Mehra</item>
+        <item>V Hemanth Sai</item>
+        <item>Shubham Jain</item>
+        <item>Mayank Gupta</item>
+        <item>Shravani Eleswarapu</item>
+        <item>Peeyush Bakolia</item>
+    </string-array>
+
+    <string-array name="team_roles">
+        <item>Convener</item>
+        <item>Co-Convener</item>
+        <item>Co-Convener</item>
+        <item>Core Team Advisor</item>
+        <item>General Secretary, Cultural Council</item>
+        <item>Marketing</item>
+        <item>Marketing</item>
+        <item>Marketing</item>
+        <item>Marketing</item>
+        <item>Marketing</item>
+        <item>Publicity</item>
+        <item>Publicity</item>
+        <item>Publicity</item>
+        <item>Publicity</item>
+        <item>Publicity</item>
+        <item>Publicity</item>
+        <item>Public Relations</item>
+        <item>Public Relations</item>
+        <item>Events</item>
+        <item>Events</item>
+        <item>Operations and Logistics</item>
+        <item>Operations and Logistics</item>
+        <item>Web Team</item>
+        <item>Web Team</item>
+        <item>Android App</item>
+        <item>Creative</item>
+        <item>Media</item>
+        <item>Creative</item>
+        <item>Creative</item>
+
+    </string-array>
+    <integer-array name="team_photos">
+        <item>@drawable/kalyan</item>
+        <item>@drawable/sagar_jain</item>
+        <item>@drawable/pranu</item>
+        <item>@drawable/ronith</item>
+        <item>@drawable/ashutosh</item>
+        <item>@drawable/yogesh</item>
+        <item>@drawable/prakarsh</item>
+        <item>@drawable/arun</item>
+        <item>@drawable/prachet</item>
+        <item>@drawable/rajesh</item>
+        <item>@drawable/sumanth</item>
+        <item>@drawable/kalpesh</item>
+        <item>@drawable/sanprit</item>
+        <item>@drawable/deepesh</item>
+        <item>@drawable/sumit</item>
+        <item>@drawable/anuj</item>
+        <item>@drawable/parth</item>
+        <item>@drawable/person</item>
+        <item>@drawable/prakhar</item>
+        <item>@drawable/manda</item>
+        <item>@drawable/nikhil</item>
+        <item>@drawable/sagar</item>
+        <item>@drawable/person</item>
+        <item>@drawable/arjun</item>
+        <item>@drawable/person</item>
+        <item>@drawable/shubham</item>
+        <item>@drawable/person</item>
+        <item>@drawable/person</item>
+        <item>@drawable/person</item>
+    </integer-array>
+
+    <string-array name="team_emails">
+        <item>konda.kreddy.civ14@iitbhu.ac.in</item>
+        <item>sagar.jain.che14@iitbhu.ac.in</item>
+        <item>palakurthy.pranu.mec14@iitbhu.ac.in</item>
+        <item>rronith.reddy.mat14@iitbhu.ac.in</item>
+        <item>ashutosh.ppandey.mec14@iitbhu.ac.in</item>
+        <item>yogesh.gutta.mst15@iitbhu.ac.in</item>
+        <item>prakarsh.saxena.met15@iitbhu.ac.in</item>
+        <item>arun.suri.phe15@iitbhu.ac.in</item>
+        <item>prachet.mishra.met15@iitbhu.ac.in</item>
+        <item>rajesh.krjha.met15@iitbhu.ac.in</item>
+        <item>nsai.sumanth.eee15@iitbhu.ac.in</item>
+        <item>kalpesh.bansal.eee15@iitbhu.ac.in</item>
+        <item>sanprit.nayan.met15@iitbhu.ac.in</item>
+        <item>deepesh.kmeena.eee15@iitbhu.ac.in</item>
+        <item>sumit.nayak.met15@iitbhu.ac.in</item>
+        <item>anujkumar.singh.bce15@iitbhu.ac.in</item>
+        <item>parth.sharma.civ15@iitbhu.ac.in</item>
+        <item>kanvars.kohli.bce15@iitbhu.ac.in</item>
+        <item>prakhar.student.met15@iitbhu.ac.in</item>
+        <item>manda.arunoday.met15@iitbhu.ac.in</item>
+        <item>ikkurthi.nraja.bme15@iitbhu.ac.in</item>
+        <item>sagar.singh.che15@iitbhu.ac.in</item>
+        <item>rishabh.agrahari.eee15@iitbhu.ac.in</item>
+        <item>arjun.mehra.mec15@iitbhu.ac.in</item>
+        <item>vhemanth.sai.eee15@iitbhu.ac.in</item>
+        <item>shubham.jain.che15@iitbhu.ac.in</item>
+        <item>mayank.gupta.phe15@iitbhu.ac.in</item>
+        <item>eleswarapu.shravani.che15@iitbhu.ac.in</item>
+        <item>peeyush.bakolia.eee15@iitbhu.ac.in</item>
+    </string-array>
+    <string-array name="team_fblinks">
+        <item>https://www.facebook.com/kalyan.reddy23</item>
+        <item>https://www.facebook.com/sagarjaingarg</item>
+        <item>https://www.facebook.com/pranupalakurthy</item>
+        <item>https://www.facebook.com/ronith.reddy.79</item>
+        <item>https://www.facebook.com/ashutoshprakarsh.pandey</item>
+        <item>https://www.facebook.com/yogeshgutta</item>
+        <item>https://www.facebook.com/prakarsh.saxena.14</item>
+        <item>https://www.facebook.com/arun.suri.50</item>
+        <item>https://www.facebook.com/prachet.mishra.3</item>
+        <item>https://www.facebook.com/rajesh.jha.3511041</item>
+        <item>https://www.facebook.com/sumanthnark</item>
+        <item>https://www.facebook.com/kalpeshbnsl</item>
+        <item>https://www.facebook.com/sanpritnayan.IITBHU</item>
+        <item>https://www.facebook.com/deepesh.meena.7798</item>
+        <item>https://www.facebook.com/sumit.nayak.33</item>
+        <item>https://www.facebook.com/profile.php?id=100008877452509</item>
+        <item>https://www.facebook.com/parth.0125</item>
+        <item>https://www.facebook.com/profile.php?id=100006264829259</item>
+        <item>https://www.facebook.com/codetillinfinty</item>
+        <item>https://www.facebook.com/arunoday.manda</item>
+        <item>https://www.facebook.com/nikhil.raj.7165331</item>
+        <item>https://www.facebook.com/sagar.singh.1804109</item>
+        <item>https://www.facebook.com/rishabh.ags</item>
+        <item>https://www.facebook.com/arjunmehra1997</item>
+        <item>https://www.facebook.com/vhemanth.sai</item>
+        <item>https://www.facebook.com/shubham.jain.165685</item>
+        <item>https://www.facebook.com/g.m.r.mayank</item>
+        <item>https://www.facebook.com/shravani.eleswarapu</item>
+        <item>https://www.facebook.com/peeyush.verma.161?ref=br_rs</item>
+    </string-array>
+
+    <string-array name="genders">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="years">
+        <item>First</item>
+        <item>Second</item>
+        <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
     </string-array>
 
 </resources>

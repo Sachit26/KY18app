@@ -29,6 +29,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -60,13 +61,18 @@ public class MapFragment extends Fragment implements
     final LatLng VIVEKANANDA = new LatLng(25.259178568626197, 82.9871016740799);
     final LatLng VISHVAKARMA = new LatLng(25.25782984167578, 82.98563718795776);
     final LatLng IIT_GUEST_HOUSE = new LatLng(25.259610352146275, 82.98519730567932);
+    final LatLng GRT_APARTMENTS = new LatLng(25.258513910094607, 82.9848164319992);
+    final LatLng SALUJA = new LatLng(25.270190994281233, 82.98426389694214);
+    final LatLng LIMBDI_GIRLS = new LatLng(25.260766214518878, 82.98562176525593);
+
     final LatLng REGISTRATION_DESK = new LatLng(25.261651600080054, 82.98654980957508);
     final LatLng SWATANTRATA_BHAVAN = new LatLng(25.26073589298122, 82.99452066421509);
     final LatLng G11 = new LatLng(25.26123559095607, 82.99245402216911);
     final LatLng G14 = new LatLng(25.26172800976422, 82.99058854579926);
     final LatLng LT3 = new LatLng(25.25884866557616, 82.99267530441284);
     final LatLng LT1 = new LatLng(25.260275004676558, 82.99107670783997);
-    final LatLng ADV_GROUNDS = new LatLng(25.258717674410665, 82.99015402793884);
+    final LatLng ADV_GROUNDS_EVENT = new LatLng(25.258717674410665, 82.99015402793884);
+    final LatLng ADV_GROUNDS_PRONITE = new LatLng(25.258281036171866, 82.99061268568039);
     final LatLng ATM_HG1 = new LatLng(25.2622883459788, 82.9817345738411);
     final LatLng ATM_HG2 = new LatLng(25.26173468044865, 82.98157699406147);
     final LatLng ATM_VT = new LatLng(25.26537378738049, 82.98967659473419);
@@ -106,11 +112,11 @@ public class MapFragment extends Fragment implements
                 (SupportMapFragment) getChildFragmentManager()
                         .findFragmentById(R.id.map);
 
-        registrationDeskMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_register);
-        hostelMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_hostel);
-        eventMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_event);
-        proniteMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_pronite);
-        atmMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_pronite);
+        registrationDeskMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_registration_marker);
+        hostelMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_hostel_marker);
+        eventMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_event_marker);
+        proniteMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_pronite_marker);
+        atmMarker = BitmapDescriptorFactory.fromResource(R.drawable.ic_atm_marker);
 
         mapFragment.getMapAsync(this);
 
@@ -148,7 +154,7 @@ public class MapFragment extends Fragment implements
             @Override
             public void onClick(View view) {
                 mMap.clear();
-                markEventVenues();
+                markRegistrationDesk();
                 filterFAM.close(true);
             }
         });
@@ -210,7 +216,13 @@ public class MapFragment extends Fragment implements
         markAtms();
         markProniteVenues();
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(REGISTRATION_DESK, 17));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(REGISTRATION_DESK)
+                .zoom(17)
+                .tilt(67.5f)
+                .bearing(0)
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
     /**
@@ -286,6 +298,7 @@ public class MapFragment extends Fragment implements
         mMap.addMarker(new MarkerOptions().position(G14).title("G14 Hall").icon(eventMarker));
         mMap.addMarker(new MarkerOptions().position(LT1).title("Lecture Theatre 1").icon(eventMarker));
         mMap.addMarker(new MarkerOptions().position(LT3).title("Lecture Theatre 3").icon(eventMarker));
+        mMap.addMarker(new MarkerOptions().position(ADV_GROUNDS_EVENT).title("ADV Grounds").icon(eventMarker));
     }
 
     private void markHostels() {
@@ -304,6 +317,9 @@ public class MapFragment extends Fragment implements
         mMap.addMarker(new MarkerOptions().position(VISHVAKARMA).title("Vishvakarma Hostel").icon(hostelMarker));
         mMap.addMarker(new MarkerOptions().position(GANDHI_SMRITI_MAHILA).title("Gandhi Smriti Mahila Hostel").icon(hostelMarker));
         mMap.addMarker(new MarkerOptions().position(IIT_GUEST_HOUSE).title("IIT Guest House").icon(hostelMarker));
+        mMap.addMarker(new MarkerOptions().position(SALUJA).title("Saluja Girls Hostel").icon(hostelMarker));
+        mMap.addMarker(new MarkerOptions().position(LIMBDI_GIRLS).title("Limbdi Girls Hostel").icon(hostelMarker));
+        mMap.addMarker(new MarkerOptions().position(GRT_APARTMENTS).title("GRT Apartments").icon(hostelMarker));
     }
 
     private void markAtms() {
@@ -314,7 +330,7 @@ public class MapFragment extends Fragment implements
     }
 
     private void markProniteVenues() {
-        mMap.addMarker(new MarkerOptions().position(ADV_GROUNDS).title("ADV Grounds").icon(proniteMarker));
+        mMap.addMarker(new MarkerOptions().position(ADV_GROUNDS_PRONITE).title("ADV Grounds").icon(proniteMarker));
     }
 
     private void createCustomAnimation() {

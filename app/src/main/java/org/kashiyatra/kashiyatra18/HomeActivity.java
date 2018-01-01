@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,19 +27,22 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.kashiyatra.kashiyatra18.fragments.AboutFragment;
 import org.kashiyatra.kashiyatra18.fragments.EventsFragment;
 import org.kashiyatra.kashiyatra18.fragments.FaqFragment;
-import org.kashiyatra.kashiyatra18.fragments.GalleryFragment;
+import org.kashiyatra.kashiyatra18.fragments.HelplineFragment;
 import org.kashiyatra.kashiyatra18.fragments.MapFragment;
 import org.kashiyatra.kashiyatra18.fragments.ScheduleFragment;
+import org.kashiyatra.kashiyatra18.fragments.SponsorsFragment;
 import org.kashiyatra.kashiyatra18.fragments.TeamFragment;
 
 import static java.lang.Math.min;
@@ -50,6 +54,7 @@ public class HomeActivity extends AppCompatActivity
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton5, floatingActionButton6;
     private TabsPagerAdapter mTabsPagerAdapter;
+    private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private AppBarLayout appBarLayout;
     private int back_count = 0;
@@ -62,8 +67,11 @@ public class HomeActivity extends AppCompatActivity
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this);
+
         final TextView titleTextView = findViewById(R.id.title_view);
         titleTextView.setText(getTitle());
+        titleTextView.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Semibold.ttf"));
 
         prefs = getSharedPreferences(SplashActivity.storeUserDetails, Context.MODE_PRIVATE);
         isLoggedIn = prefs.getBoolean("isLoggedIn", false);
@@ -152,16 +160,19 @@ public class HomeActivity extends AppCompatActivity
         mViewPager = findViewById(R.id.viewpager);
         mViewPager.setAdapter(mTabsPagerAdapter);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mTabLayout = findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
                 if (tab.getPosition() == 4) {
                     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
                     appBarLayout.setExpanded(false, true);
-                    LoginActivity.animateElement(materialDesignFAM, 300, -1000);
+                    if (materialDesignFAM.isOpened()) {
+                        materialDesignFAM.close(true);
+                    }
+                    materialDesignFAM.setVisibility(View.GONE);
                 }
             }
 
@@ -169,7 +180,6 @@ public class HomeActivity extends AppCompatActivity
             public void onTabUnselected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 4) {
                     materialDesignFAM.setVisibility(View.VISIBLE);
-                    LoginActivity.animateElement(materialDesignFAM, 300, -1000, 0);
                 }
             }
 
@@ -178,6 +188,8 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
+
+        changeTabsFont();
     }
 
     private void setAppBarOffset(int offsetPx) {
@@ -268,13 +280,13 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_about:
                 mViewPager.setCurrentItem(0);
                 break;
-            case R.id.nav_schedule:
+            case R.id.nav_events:
                 mViewPager.setCurrentItem(1);
                 break;
-            case R.id.nav_events:
+            case R.id.nav_schedule:
                 mViewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_gallery:
+            case R.id.nav_sponsors:
                 mViewPager.setCurrentItem(3);
                 break;
             case R.id.nav_location:
@@ -283,11 +295,11 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_faq:
                 mViewPager.setCurrentItem(5);
                 break;
-//            case R.id.nav_sponsors:
-//                mViewPager.setCurrentItem(5);
-//                break;
-            case R.id.nav_team:
+            case R.id.nav_helpline:
                 mViewPager.setCurrentItem(6);
+                break;
+            case R.id.nav_team:
+                mViewPager.setCurrentItem(7);
                 break;
             default:
                 break;
@@ -314,6 +326,23 @@ public class HomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    private void changeTabsFont() {
+
+        ViewGroup vg = (ViewGroup) mTabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    ((TextView) tabViewChild).setTypeface(Typeface.createFromAsset(getAssets(), "BebasNeue Regular.ttf"), Typeface.NORMAL);
+                    ((TextView) tabViewChild).setTextSize(getResources().getDimension(R.dimen.desc_text_size) * 1.5f);
+                }
+            }
+        }
+    }
+
     private class TabsPagerAdapter extends FragmentPagerAdapter {
 
         private TabsPagerAdapter(FragmentManager fm) {
@@ -327,18 +356,18 @@ public class HomeActivity extends AppCompatActivity
                 case 0:
                     return AboutFragment.newInstance();
                 case 1:
-                    return ScheduleFragment.newInstance();
-                case 2:
                     return EventsFragment.newInstance();
+                case 2:
+                    return ScheduleFragment.newInstance();
                 case 3:
-                    return GalleryFragment.newInstance();
+                    return SponsorsFragment.newInstance();
                 case 4:
                     return MapFragment.newInstance();
                 case 5:
                     return FaqFragment.newInstance();
-//                case 5:
-//                    return SponsorsFragment.newInstance();
                 case 6:
+                    return HelplineFragment.newInstance();
+                case 7:
                     return TeamFragment.newInstance();
                 default:
                     return AboutFragment.newInstance();
@@ -347,30 +376,30 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 7;
+            return 8;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "ABOUT";
+                    return "About";
                 case 1:
-                    return "SCHEDULE";
+                    return "Events";
                 case 2:
-                    return "EVENTS";
+                    return "Schedule";
                 case 3:
-                    return "GALLERY";
+                    return "Sponsors";
                 case 4:
-                    return "MAP";
+                    return "Map";
                 case 5:
                     return "FAQ";
-//                case 5:
-//                    return "SPONSORS";
                 case 6:
-                    return "TEAM";
+                    return "Helpline";
+                case 7:
+                    return "Team";
                 default:
-                    return "ABOUT";
+                    return "About";
             }
         }
 

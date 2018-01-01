@@ -1,8 +1,7 @@
 package org.kashiyatra.kashiyatra18.fragments;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,27 +43,7 @@ public class EventsFragment extends Fragment {
 
         String[] names = getResources().getStringArray(R.array.event_names);
         String[] descriptions = getResources().getStringArray(R.array.event_descriptions);
-        Bitmap backgrounds[] = {
-                BitmapFactory.decodeResource(getResources(), R.drawable.bandish),
-                BitmapFactory.decodeResource(getResources(), R.drawable.enquizta),
-                BitmapFactory.decodeResource(getResources(), R.drawable.mirage),
-                BitmapFactory.decodeResource(getResources(), R.drawable.samwaad),
-                BitmapFactory.decodeResource(getResources(), R.drawable.abhinay),
-                BitmapFactory.decodeResource(getResources(), R.drawable.toolika),
-                BitmapFactory.decodeResource(getResources(), R.drawable.natraj),
-                BitmapFactory.decodeResource(getResources(), R.drawable.crosswindz)
-        };
-
-        Bitmap icons[] = {
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_bandish),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_enquizta),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_mirage),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_samwaad),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_abhinay),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_toolika),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_natraj),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_crosswindz)
-        };
+        TypedArray backgrounds = getResources().obtainTypedArray(R.array.event_backgrounds);
 
         mEventRecycler = rootView.findViewById(R.id.eventlist_recycler_view);
         final DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -84,7 +63,7 @@ public class EventsFragment extends Fragment {
                 outRect.bottom = padding / 2;
             }
         });
-        mEventAdapter = new EventsAdapter(names, descriptions, backgrounds, icons);
+        mEventAdapter = new EventsAdapter(getContext(), names, descriptions, backgrounds);
         mEventRecycler.setAdapter(mEventAdapter);
         mEventRecycler.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override

@@ -7,17 +7,17 @@
             android:icon="@drawable/ic_updates"
             android:title="About" />
         <item
-            android:id="@+id/nav_schedule"
-            android:icon="@drawable/ic_schedule"
-            android:title="Schedule" />
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_trophy"
             android:title="Events" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_schedule"
+            android:icon="@drawable/ic_schedule"
+            android:title="Schedule" />
+        <item
+            android:id="@+id/nav_sponsors"
+            android:icon="@drawable/ic_sponsors"
+            android:title="Sponsors" />
         <item
             android:id="@+id/nav_location"
             android:icon="@drawable/ic_map"
@@ -26,14 +26,14 @@
             android:id="@+id/nav_faq"
             android:icon="@drawable/ic_faq"
             android:title="FAQ" />
-        <!--<item-->
-        <!--android:id="@+id/nav_sponsors"-->
-        <!--android:icon="@drawable/ic_sponsors"-->
-        <!--android:title="Sponsors" />-->
+        <item
+            android:id="@+id/nav_helpline"
+            android:icon="@drawable/ic_phone"
+            android:title="Helpline" />
         <item
             android:id="@+id/nav_team"
             android:icon="@drawable/ic_team"
-            android:title="Team KY" />
+            android:title="Team" />
     </group>
 
 </menu>

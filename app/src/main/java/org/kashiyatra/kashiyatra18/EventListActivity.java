@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import org.kashiyatra.kashiyatra18.adapters.SubeventsAdapter;
 import org.kashiyatra.kashiyatra18.utils.RecyclerItemClickListener;
@@ -24,6 +25,10 @@ public class EventListActivity extends AppCompatActivity {
 
         String[] subeventNames;
         String[] subeventDescs;
+
+        int bgImage = getResources().obtainTypedArray(R.array.event_backgrounds).getResourceId(eventPosition, -1);
+        ImageView bgImageView = findViewById(R.id.background_image_view);
+//        bgImageView.setImageResource(bgImage);
         switch (eventPosition) {
             case 0:
                 subeventNames = getResources().getStringArray(R.array.bandish_subevent_names);
@@ -56,6 +61,10 @@ public class EventListActivity extends AppCompatActivity {
             case 7:
                 subeventNames = getResources().getStringArray(R.array.crosswindz_subevent_names);
                 subeventDescs = getResources().getStringArray(R.array.crosswindz_subevent_short_description);
+                break;
+            case 8:
+                subeventNames = getResources().getStringArray(R.array.xtasy_subevent_names);
+                subeventDescs = getResources().getStringArray(R.array.xtasy_subevent_short_description);
                 break;
             default:
                 subeventNames = getResources().getStringArray(R.array.bandish_subevent_names);

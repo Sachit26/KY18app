@@ -86,24 +86,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/fb_login_button"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp" />
 
     <Button
         android:id="@+id/ky_login_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_above="@+id/register_linear_layout"
-        android:layout_alignLeft="@id/fb_login_button"
-        android:layout_alignRight="@id/fb_login_button"
-        android:background="@color/colorSecondary"
-        android:drawablePadding="5dp"
+        android:layout_alignEnd="@id/fb_login_button"
+        android:layout_alignStart="@id/fb_login_button"
+        android:background="@color/colorAccent"
         android:drawableStart="@drawable/ic_ky"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:text="Log in with KY Number"
+        android:paddingEnd="36dp"
+        android:text="Log in with KY ID"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"></Button>
 
     <Button
         android:id="@+id/login_submit"
@@ -112,7 +111,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/ky_number_input"
         android:background="#000000"
-        android:drawableTint="#a9a8a2"
         android:drawableTop="@drawable/ic_submit"
         android:visibility="gone" />
 
