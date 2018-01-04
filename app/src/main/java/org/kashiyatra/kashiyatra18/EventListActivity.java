@@ -74,7 +74,7 @@ public class EventListActivity extends AppCompatActivity {
         RecyclerView mSubeventRecycler = findViewById(R.id.subevent_list_recycler_view);
         RecyclerView.LayoutManager mSubeventLayoutManager = new LinearLayoutManager(this);
         mSubeventRecycler.setLayoutManager(mSubeventLayoutManager);
-        RecyclerView.Adapter mSubeventsAdapter = new SubeventsAdapter(subeventNames, subeventDescs);
+        RecyclerView.Adapter mSubeventsAdapter = new SubeventsAdapter(getApplicationContext(), subeventNames, subeventDescs);
 
         mSubeventRecycler.setAdapter(mSubeventsAdapter);
         mSubeventRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {

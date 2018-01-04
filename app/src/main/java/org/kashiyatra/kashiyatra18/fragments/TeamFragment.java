@@ -34,13 +34,14 @@ public class TeamFragment extends Fragment {
 
         String[] names = getResources().getStringArray(R.array.team_names);
         String[] roles = getResources().getStringArray(R.array.team_roles);
-        android.content.res.TypedArray photos = getResources().obtainTypedArray(R.array.team_photos);
+        String[] photoUrls = getResources().getStringArray(R.array.team_photo_urls);
         String[] emails = getResources().getStringArray(R.array.team_emails);
         String[] fbLinks = getResources().getStringArray(R.array.team_fblinks);
+        String[] linkedInLinks = getResources().getStringArray(R.array.team_linkedin_urls);
 
         RecyclerView mTeamRecyclerView = rootView.findViewById(R.id.team_recycler);
         RecyclerView.LayoutManager mTeamLayoutManager = new LinearLayoutManager(getActivity());
-        RecyclerView.Adapter mTeamAdapter = new TeamAdapter(getContext(), names, roles, photos, emails, fbLinks);
+        RecyclerView.Adapter mTeamAdapter = new TeamAdapter(getContext(), names, roles, photoUrls, emails, fbLinks, linkedInLinks);
 
         mTeamRecyclerView.setLayoutManager(mTeamLayoutManager);
         mTeamRecyclerView.setAdapter(mTeamAdapter);

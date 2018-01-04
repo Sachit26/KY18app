@@ -4,14 +4,11 @@ package org.kashiyatra.kashiyatra18;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -40,8 +37,6 @@ import com.google.android.gms.tasks.Task;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.net.URL;
 import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
@@ -134,8 +129,8 @@ public class LoginActivity extends AppCompatActivity {
                             public void onCompleted(JSONObject jsonObject, GraphResponse response) {
                                 try {
                                     String email = jsonObject.getString("email");
-                                    new getDetailsUsingEmail(email).execute();
                                     LoginManager.getInstance().logOut();
+                                    new getDetailsUsingEmail(email).execute();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -150,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
+                Toast.makeText(getApplicationContext(), "Login Cancelled", Toast.LENGTH_LONG).show();
                 // App code
             }
 
@@ -320,12 +316,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 try {
                     jsonResponse = new JSONObject(jsonData);
-                    Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                    byte[] b = baos.toByteArray();
-                    String propic = Base64.encodeToString(b, Base64.DEFAULT);
-                    jsonResponse.put("profile_picture_string", propic);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -355,7 +345,7 @@ public class LoginActivity extends AppCompatActivity {
                     String name = result.getString("full_name");
                     String email = result.getString("email");
                     String college = result.getString("college");
-                    String proPicString = result.getString("profile_picture_string");
+                    String proPicUrl = result.getString("profile_picture");
                     String kyId;
                     try {
                         kyId = result.getString("ky_id");
@@ -369,7 +359,7 @@ public class LoginActivity extends AppCompatActivity {
                     prefEditor.putString("email", email);
                     prefEditor.putString("ky_id", kyId);
                     prefEditor.putString("college", college);
-                    prefEditor.putString("profilePic", proPicString);
+                    prefEditor.putString("profilePic", proPicUrl);
                     prefEditor.putBoolean("isLoggedIn", true);
                     prefEditor.commit();
                     startHomeActivity();
@@ -414,18 +404,12 @@ public class LoginActivity extends AppCompatActivity {
                         .build();
                 Response response = client.newCall(request).execute();
                 String jsonData = response.body().string();
-                Log.e("json", "json" + jsonData);
+                Log.e("json", jsonData);
                 Log.e("status_code", String.valueOf(response.code()));
                 JSONObject jsonResponse = new JSONObject();
 
                 try {
                     jsonResponse = new JSONObject(jsonData);
-                    Bitmap profilePic = BitmapFactory.decodeStream(new URL(jsonResponse.getString("profile_picture")).openConnection().getInputStream());
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    profilePic.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                    byte[] b = baos.toByteArray();
-                    String propic = Base64.encodeToString(b, Base64.DEFAULT);
-                    jsonResponse.put("profile_picture_string", propic);
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("response_error", e.toString());
@@ -458,7 +442,7 @@ public class LoginActivity extends AppCompatActivity {
                     String name = result.getString("full_name");
                     String email = result.getString("email");
                     String college = result.getString("college");
-                    String proPicString = result.getString("profile_picture_string");
+                    String proPicUrl = result.getString("profile_picture");
                     String kyId;
                     try {
                         kyId = result.getString("ky_id");
@@ -473,7 +457,7 @@ public class LoginActivity extends AppCompatActivity {
                     prefEditor.putString("email", email);
                     prefEditor.putString("ky_id", kyId);
                     prefEditor.putString("college", college);
-                    prefEditor.putString("profilePic", proPicString);
+                    prefEditor.putString("profilePic", proPicUrl);
                     prefEditor.putBoolean("isLoggedIn", true);
                     prefEditor.commit();
                     startHomeActivity();

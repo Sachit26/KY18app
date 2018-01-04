@@ -35,6 +35,7 @@ public class EventActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private int eventPosition;
     private int subeventPosition;
+    private int mColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,16 +122,26 @@ public class EventActivity extends AppCompatActivity {
         ImageView eventImageView = findViewById(R.id.event_banner);
         eventImageView.setImageBitmap(img);
 
-        Palette.from(img).generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                int darkMutedColor = palette.getDarkMutedColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
-                int darkVibrantColor = palette.getDarkVibrantColor(darkMutedColor);
-                appBarLayout.setBackgroundColor(darkVibrantColor);
-                tabLayout.setBackgroundColor(darkVibrantColor);
+//        Palette.from(img).generate(new Palette.PaletteAsyncListener() {
+//            @Override
+//            public void onGenerated(Palette palette) {
+//                int darkMutedColor = palette.getDarkMutedColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
+//                int darkVibrantColor = palette.getDarkVibrantColor(darkMutedColor);
+//                mColor = darkVibrantColor;
+//                Toast.makeText(getApplicationContext(),String.valueOf(mColor),Toast.LENGTH_SHORT).show();
+//                appBarLayout.setBackgroundColor(darkVibrantColor);
+//                tabLayout.setBackgroundColor(darkVibrantColor);
+//
+//            }
+//        });
 
-            }
-        });
+        Palette palette = Palette.from(img).generate();
+        int darkMutedColor = palette.getDarkMutedColor(ContextCompat.getColor(getApplicationContext(), R.color.colorSecondary));
+        int darkVibrantColor = palette.getDarkVibrantColor(darkMutedColor);
+        mColor = darkVibrantColor;
+//        Toast.makeText(getApplicationContext(),String.valueOf(mColor),Toast.LENGTH_SHORT).show();
+        appBarLayout.setBackgroundColor(darkVibrantColor);
+        tabLayout.setBackgroundColor(darkVibrantColor);
 
         mTabsPagerAdapter = new EventActivity.TabsPagerAdapter(getSupportFragmentManager());
 
@@ -183,11 +194,11 @@ public class EventActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return DescriptionFragment.newInstance(eventPosition, subeventPosition);
+                    return DescriptionFragment.newInstance(eventPosition, subeventPosition, mColor);
                 case 1:
-                    return RulesFragment.newInstance(eventPosition, subeventPosition);
+                    return RulesFragment.newInstance(eventPosition, subeventPosition, mColor);
                 default:
-                    return RulesFragment.newInstance(eventPosition, subeventPosition);
+                    return RulesFragment.newInstance(eventPosition, subeventPosition, mColor);
             }
         }
 

@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import org.kashiyatra.kashiyatra18.R;
 
 /**
@@ -17,14 +20,14 @@ import org.kashiyatra.kashiyatra18.R;
  */
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
-    private String[] mNames, mRoles, mEmails, mFbLinks;
-    private android.content.res.TypedArray mPhotos;
+    private String[] mNames, mRoles, mEmails, mFbLinks, mLinkedInLinks, mPhotoUrls;
     private Context context;
 
-    public TeamAdapter(Context context, String[] names, String[] roles, android.content.res.TypedArray photos, String[] emails, String[] fbLinks) {
+    public TeamAdapter(Context context, String[] names, String[] roles, String[] photoUrls, String[] emails, String[] fbLinks, String[] linkedInLinks) {
         mNames = names;
         mRoles = roles;
-        mPhotos = photos;
+        mPhotoUrls = photoUrls;
+        mLinkedInLinks = linkedInLinks;
         mEmails = emails;
         mFbLinks = fbLinks;
         this.context = context;
@@ -41,7 +44,15 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public void onBindViewHolder(TeamAdapter.ViewHolder holder, final int position) {
         holder.mNameTextView.setText(mNames[position]);
         holder.mRoleTextView.setText(mRoles[position]);
-        holder.mPhotoView.setImageResource(mPhotos.getResourceId(position, -1));
+
+        Glide.with(context)
+                .load(mPhotoUrls[position])
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.person)
+                        .centerCrop()
+                        .dontAnimate()
+                        .dontTransform())
+                .into(holder.mPhotoView);
         holder.mEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +71,13 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
                 context.startActivity(intent);
             }
         });
+        holder.mLinkedIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mLinkedInLinks[position]));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -71,7 +89,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         public View mView;
         public TextView mNameTextView, mRoleTextView;
         public de.hdodenhof.circleimageview.CircleImageView mPhotoView;
-        public ImageButton mEmailButton, mFbButton;
+        public ImageButton mEmailButton, mFbButton, mLinkedIn;
 
         public ViewHolder(View v) {
             super(v);
@@ -81,6 +99,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             mPhotoView = v.findViewById(R.id.person_photo);
             mEmailButton = v.findViewById(R.id.send_email);
             mFbButton = v.findViewById(R.id.visit_fb);
+            mLinkedIn = v.findViewById(R.id.visit_linkedin);
         }
     }
 }

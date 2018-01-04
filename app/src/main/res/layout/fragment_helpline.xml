@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
         <LinearLayout style="@style/Department">
 
@@ -100,5 +101,29 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <TextView
+                style="@style/Department_Header"
+                android:text="For any other queries" />
+
+            <LinearLayout style="@style/CG_Row">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="mailToKy"
+                    android:text="Mail us at kashiyatra@iitbhu.ac.in"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

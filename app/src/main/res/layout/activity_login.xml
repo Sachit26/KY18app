@@ -96,13 +96,13 @@
         android:layout_above="@+id/register_linear_layout"
         android:layout_alignEnd="@id/fb_login_button"
         android:layout_alignStart="@id/fb_login_button"
-        android:background="@color/colorAccent"
+        android:background="#909000"
         android:drawableStart="@drawable/ic_ky"
         android:paddingEnd="36dp"
         android:text="Log in with KY ID"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="15sp"></Button>
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/login_submit"

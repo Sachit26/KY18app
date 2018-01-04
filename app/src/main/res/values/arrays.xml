@@ -475,39 +475,39 @@
         <item>Media</item>
         <item>Creative</item>
         <item>Creative</item>
-
     </string-array>
-    <integer-array name="team_photos">
-        <item>@drawable/kalyan</item>
-        <item>@drawable/sagar_jain</item>
-        <item>@drawable/pranu</item>
-        <item>@drawable/ronith</item>
-        <item>@drawable/ashutosh</item>
-        <item>@drawable/yogesh</item>
-        <item>@drawable/prakarsh</item>
-        <item>@drawable/arun</item>
-        <item>@drawable/prachet</item>
-        <item>@drawable/rajesh</item>
-        <item>@drawable/sumanth</item>
-        <item>@drawable/kalpesh</item>
-        <item>@drawable/sanprit</item>
-        <item>@drawable/deepesh</item>
-        <item>@drawable/sumit</item>
-        <item>@drawable/anuj</item>
-        <item>@drawable/parth</item>
-        <item>@drawable/person</item>
-        <item>@drawable/prakhar</item>
-        <item>@drawable/manda</item>
-        <item>@drawable/nikhil</item>
-        <item>@drawable/sagar</item>
-        <item>@drawable/person</item>
-        <item>@drawable/arjun</item>
-        <item>@drawable/person</item>
-        <item>@drawable/shubham</item>
-        <item>@drawable/person</item>
-        <item>@drawable/person</item>
-        <item>@drawable/person</item>
-    </integer-array>
+
+    <string-array name="team_photo_urls">
+        <item>https://image.ibb.co/jpFSxG/kalyan.jpg</item>
+        <item>https://image.ibb.co/kkyVHG/sagar_jain.jpg</item>
+        <item>https://image.ibb.co/hcc7xG/pranu.jpg</item>
+        <item>https://image.ibb.co/kF44cG/ronith.jpg</item>
+        <item>https://image.ibb.co/iLwBPw/ashutosh.jpg</item>
+        <item>https://image.ibb.co/ioXPcG/yogesh.jpg</item>
+        <item>https://image.ibb.co/dcey4w/prakarsh.jpg</item>
+        <item>https://image.ibb.co/mg8Qjw/arun.jpg</item>
+        <item>https://image.ibb.co/f9Rd4w/prachet.jpg</item>
+        <item>https://image.ibb.co/dR2wrb/rajesh.jpg</item>
+        <item>https://image.ibb.co/njZRrb/sumanth.jpg</item>
+        <item>https://image.ibb.co/efrd4w/kalpesh.jpg</item>
+        <item>https://image.ibb.co/ftJVHG/sanprit.jpg</item>
+        <item>https://image.ibb.co/jveWPw/deepesh.jpg</item>
+        <item>https://image.ibb.co/fhVMPw/sumit.jpg</item>
+        <item>https://image.ibb.co/htf5jw/anuj.jpg</item>
+        <item>https://image.ibb.co/mwtfHG/parth.jpg</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/dESUBb/prakhar.jpg</item>
+        <item>https://image.ibb.co/eCF5jw/manda.jpg</item>
+        <item>https://image.ibb.co/b8vucG/nikhil.jpg</item>
+        <item>https://image.ibb.co/hDy84w/sagar.jpg</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/k5orPw/arjun.jpg</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/mqnPcG/shubham.jpg</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+    </string-array>
 
     <string-array name="team_emails">
         <item>konda.kreddy.civ14@iitbhu.ac.in</item>
@@ -570,6 +570,38 @@
         <item>https://www.facebook.com/g.m.r.mayank</item>
         <item>https://www.facebook.com/shravani.eleswarapu</item>
         <item>https://www.facebook.com/peeyush.verma.161?ref=br_rs</item>
+    </string-array>
+
+    <string-array name="team_linkedin_urls">
+        <item>https://www.linkedin.com/in/kalyan-reddy-578640105/</item>
+        <item>https://www.linkedin.com/in/sagar-jain-b70147b5/</item>
+        <item>https://www.linkedin.com/in/pranu-palakurthy-143a11109/</item>
+        <item>https://www.linkedin.com/in/ronith-reddy-953324139/</item>
+        <item>https://www.linkedin.com/in/ashutosh-prakarsh-pandey-84134b140/</item>
+        <item>https://www.linkedin.com/in/yogesh-gutta-0b2649115/</item>
+        <item>https://www.linkedin.com/in/prakarsh-saxena-44b66a126/</item>
+        <item></item>
+        <item>https://www.linkedin.com/in/prachet-mishra-77249810b/</item>
+        <item>https://www.linkedin.com/in/rajesh-jha-1b036710a/</item>
+        <item>https://www.linkedin.com/in/sai-sumanth-narkedamilli-67396b112/</item>
+        <item>https://www.linkedin.com/in/kalpesh-bansal-076173117/</item>
+        <item>https://www.linkedin.com/in/sanprit-nayan-206436105/</item>
+        <item></item>
+        <item>https://www.linkedin.com/in/sumit-nayak-105120123/</item>
+        <item></item>
+        <item>https://www.linkedin.com/in/parth-sharma-0a1652154/</item>
+        <item>https://www.linkedin.com/in/kanvar-kohli-0b5b1a130/</item>
+        <item>https://www.linkedin.com/in/prakhar-dhawan-51b6b8109/</item>
+        <item>https://www.linkedin.com/in/manda-arunoday-596704134/</item>
+        <item>https://www.linkedin.com/in/nikhil-raja-ikkurthi-643930156/</item>
+        <item></item>
+        <item>https://www.linkedin.com/in/rishabh-agrahari/</item>
+        <item>https://www.linkedin.com/in/arjun-mehra-1513ba122/</item>
+        <item>https://www.linkedin.com/in/hemanth-sai-veluvolu-941aa0125/</item>
+        <item>https://www.linkedin.com/in/shubham-jain-023637105/</item>
+        <item>https://www.linkedin.com/in/mayank-gupta-126092132/</item>
+        <item>https://www.linkedin.com/in/shravani-eleswarapu-a52b1a12a/</item>
+        <item>https://www.linkedin.com/in/peeyush-bakolia-a67865135/</item>
     </string-array>
 
     <string-array name="genders">

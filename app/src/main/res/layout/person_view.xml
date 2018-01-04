@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="@color/colorAccent"
-    android:clickable="true"
-    android:focusable="true"
+    card_view:cardBackgroundColor="@color/colorSecondary"
     card_view:cardCornerRadius="5dp"
     card_view:cardElevation="4dp"
     card_view:contentPadding="5dp">
@@ -24,7 +22,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:padding="5dp"
-            android:src="@drawable/events"
+            android:src="@drawable/person"
             card_view:civ_border_color="#909000"
             card_view:civ_border_width="2dp" />
 
@@ -45,6 +43,7 @@
                 android:singleLine="true"
                 android:text="V Hemanth Sai"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -54,7 +53,8 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="Designation"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
 
             <LinearLayout
@@ -71,6 +71,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/bg_round_button"
+                    android:elevation="3dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_email" />
 
@@ -81,8 +82,20 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/bg_round_button"
+                    android:elevation="3dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_fb" />
+
+                <ImageButton
+                    android:id="@+id/visit_linkedin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bg_round_button"
+                    android:elevation="3dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_linkedin" />
             </LinearLayout>
 
         </LinearLayout>

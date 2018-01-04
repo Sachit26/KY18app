@@ -292,7 +292,7 @@ public class MapFragment extends Fragment implements
     }
 
     private void markEventVenues() {
-        mMap.addMarker(new MarkerOptions().position(RAJPUTANA_GROUND).title("Rajputana Grounds").icon(eventMarker));
+        mMap.addMarker(new MarkerOptions().position(RAJPUTANA_GROUND).title("Rajputana Ground").icon(eventMarker));
         mMap.addMarker(new MarkerOptions().position(SWATANTRATA_BHAVAN).title("Swatantrata Bhavan").icon(eventMarker));
         mMap.addMarker(new MarkerOptions().position(G11).title("G11 Hall").icon(eventMarker));
         mMap.addMarker(new MarkerOptions().position(G14).title("G14 Hall").icon(eventMarker));

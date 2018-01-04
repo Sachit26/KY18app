@@ -3,6 +3,7 @@ package org.kashiyatra.kashiyatra18.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,10 @@ import org.kashiyatra.kashiyatra18.R;
  */
 public class RulesFragment extends Fragment {
 
-    private static final String ARG_EVENT_POSITION = "event_position", ARG_SUBEVENT_POSITION = "subevent_position";
+    private static final String ARG_EVENT_POSITION = "event_position", ARG_SUBEVENT_POSITION = "subevent_position", ARG_COLOR = "color";
     private int mEventPosition;
     private int mSubeventPosition;
+    private int mColor;
 
     public RulesFragment() {
         // Required empty public constructor
@@ -34,11 +36,12 @@ public class RulesFragment extends Fragment {
      * @return A new instance of fragment RulesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RulesFragment newInstance(int eventPosition, int subeventPosition) {
+    public static RulesFragment newInstance(int eventPosition, int subeventPosition, int color) {
         RulesFragment fragment = new RulesFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_EVENT_POSITION, eventPosition);
         args.putInt(ARG_SUBEVENT_POSITION, subeventPosition);
+        args.putInt(ARG_COLOR, color);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,6 +52,7 @@ public class RulesFragment extends Fragment {
         if (getArguments() != null) {
             mEventPosition = getArguments().getInt(ARG_EVENT_POSITION);
             mSubeventPosition = getArguments().getInt(ARG_SUBEVENT_POSITION);
+            mColor = getArguments().getInt(ARG_COLOR);
         }
     }
 
@@ -58,6 +62,11 @@ public class RulesFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_rules, container, false);
         WebView rulesTextView = rootView.findViewById(R.id.rules_text_view);
+        rulesTextView.setBackgroundColor(getResources().getColor(R.color.translucent));
+
+        NestedScrollView nestedScrollView = rootView.findViewById(R.id.rules_scrolling_view);
+        nestedScrollView.setBackgroundColor(mColor);
+
 
         String rules;
         switch (mEventPosition) {

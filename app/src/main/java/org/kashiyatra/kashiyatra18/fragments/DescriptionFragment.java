@@ -3,6 +3,7 @@ package org.kashiyatra.kashiyatra18.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,10 @@ import org.kashiyatra.kashiyatra18.R;
  */
 public class DescriptionFragment extends Fragment {
 
-    private static final String ARG_EVENT_POSITION = "event_position", ARG_SUBEVENT_POSITION = "subevent_position";
+    private static final String ARG_EVENT_POSITION = "event_position", ARG_SUBEVENT_POSITION = "subevent_position", ARG_COLOR = "color";
     private int mEventPosition;
     private int mSubeventPosition;
+    private int mColor;
 
 
     public DescriptionFragment() {
@@ -35,11 +37,13 @@ public class DescriptionFragment extends Fragment {
      * @return A new instance of fragment DescriptionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DescriptionFragment newInstance(int eventPosition, int subeventPosition) {
+    public static DescriptionFragment newInstance(int eventPosition, int subeventPosition, int color) {
         DescriptionFragment fragment = new DescriptionFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_EVENT_POSITION, eventPosition);
         args.putInt(ARG_SUBEVENT_POSITION, subeventPosition);
+        args.putInt(ARG_COLOR, color);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,6 +54,7 @@ public class DescriptionFragment extends Fragment {
         if (getArguments() != null) {
             mEventPosition = getArguments().getInt(ARG_EVENT_POSITION);
             mSubeventPosition = getArguments().getInt(ARG_SUBEVENT_POSITION);
+            mColor = getArguments().getInt(ARG_COLOR);
         }
     }
 
@@ -59,6 +64,11 @@ public class DescriptionFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_description, container, false);
         WebView descriptionTextView = rootView.findViewById(R.id.description_text_view);
+        descriptionTextView.setBackgroundColor(getResources().getColor(R.color.translucent));
+
+        NestedScrollView nestedScrollView = rootView.findViewById(R.id.description_scroll_view);
+        nestedScrollView.setBackgroundColor(mColor);
+
         String description;
         switch (mEventPosition) {
             case 0:

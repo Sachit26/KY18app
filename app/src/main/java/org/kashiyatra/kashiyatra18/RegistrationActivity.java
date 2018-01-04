@@ -292,7 +292,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Email already in use!", Toast.LENGTH_SHORT).show();
                     break;
                 default:
-                    Toast.makeText(getApplicationContext(), "Registration failed. Please try again later", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Registration failed. Please sample again later", Toast.LENGTH_SHORT).show();
             }
         }
 

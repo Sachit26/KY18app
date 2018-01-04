@@ -3,8 +3,6 @@ package org.kashiyatra.kashiyatra18;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +20,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -118,9 +117,14 @@ public class HomeActivity extends AppCompatActivity
 
 
         if (isLoggedIn) {
-            byte[] decodedByte = Base64.decode(prefs.getString("profilePic", ""), 0);
-            Bitmap dp = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-            dpView.setImageBitmap(dp);
+            Glide.with(getApplicationContext())
+                    .load(prefs.getString("profilePic", ""))
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.person)
+                            .centerCrop()
+                            .dontAnimate()
+                            .dontTransform())
+                    .into(dpView);
             nameView.setText(prefs.getString("fullName", "Guest user"));
             kyIdView.setText(prefs.getString("ky_id", "guestuser@kashiyatra.org"));
             collegeView.setText(prefs.getString("college", "IIT(BHU) Varanasi"));
@@ -239,6 +243,15 @@ public class HomeActivity extends AppCompatActivity
 
     public void mail(View view) {
         String[] email = new String[]{(String) ((TextView) view).getText()};
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Query regarding Kashiyatra");
+        startActivity(intent);
+    }
+
+    public void mailToKy(View view) {
+        String[] email = new String[]{"kashiyatra@iitbhu.ac.in"};
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, email);
