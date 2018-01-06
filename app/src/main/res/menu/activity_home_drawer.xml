@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
@@ -15,9 +16,9 @@
             android:icon="@drawable/ic_schedule"
             android:title="Schedule" />
         <item
-            android:id="@+id/nav_sponsors"
-            android:icon="@drawable/ic_sponsors"
-            android:title="Sponsors" />
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notifications"
+            android:title="Notifications" />
         <item
             android:id="@+id/nav_location"
             android:icon="@drawable/ic_map"
@@ -35,5 +36,9 @@
             android:icon="@drawable/ic_team"
             android:title="Team" />
     </group>
+    <item
+        android:id="@+id/nav_sponsors"
+        android:icon="@drawable/ic_sponsors"
+        android:title="Sponsors" />
 
 </menu>

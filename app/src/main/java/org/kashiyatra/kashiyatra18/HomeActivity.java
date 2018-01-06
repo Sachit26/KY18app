@@ -40,6 +40,7 @@ import org.kashiyatra.kashiyatra18.fragments.EventsFragment;
 import org.kashiyatra.kashiyatra18.fragments.FaqFragment;
 import org.kashiyatra.kashiyatra18.fragments.HelplineFragment;
 import org.kashiyatra.kashiyatra18.fragments.MapFragment;
+import org.kashiyatra.kashiyatra18.fragments.NotificationFragment;
 import org.kashiyatra.kashiyatra18.fragments.ScheduleFragment;
 import org.kashiyatra.kashiyatra18.fragments.SponsorsFragment;
 import org.kashiyatra.kashiyatra18.fragments.TeamFragment;
@@ -299,20 +300,23 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_schedule:
                 mViewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_sponsors:
+            case R.id.nav_notifications:
                 mViewPager.setCurrentItem(3);
                 break;
-            case R.id.nav_location:
+            case R.id.nav_sponsors:
                 mViewPager.setCurrentItem(4);
                 break;
-            case R.id.nav_faq:
+            case R.id.nav_location:
                 mViewPager.setCurrentItem(5);
                 break;
-            case R.id.nav_helpline:
+            case R.id.nav_faq:
                 mViewPager.setCurrentItem(6);
                 break;
-            case R.id.nav_team:
+            case R.id.nav_helpline:
                 mViewPager.setCurrentItem(7);
+                break;
+            case R.id.nav_team:
+                mViewPager.setCurrentItem(8);
                 break;
             default:
                 break;
@@ -373,14 +377,16 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return ScheduleFragment.newInstance();
                 case 3:
-                    return SponsorsFragment.newInstance();
+                    return NotificationFragment.newInstance();
                 case 4:
-                    return MapFragment.newInstance();
+                    return SponsorsFragment.newInstance();
                 case 5:
-                    return FaqFragment.newInstance();
+                    return MapFragment.newInstance();
                 case 6:
-                    return HelplineFragment.newInstance();
+                    return FaqFragment.newInstance();
                 case 7:
+                    return HelplineFragment.newInstance();
+                case 8:
                     return TeamFragment.newInstance();
                 default:
                     return AboutFragment.newInstance();
@@ -402,14 +408,16 @@ public class HomeActivity extends AppCompatActivity
                 case 2:
                     return "Schedule";
                 case 3:
-                    return "Sponsors";
+                    return "Notifications";
                 case 4:
-                    return "Map";
+                    return "Sponsors";
                 case 5:
-                    return "FAQ";
+                    return "Map";
                 case 6:
-                    return "Helpline";
+                    return "FAQ";
                 case 7:
+                    return "Helpline";
+                case 8:
                     return "Team";
                 default:
                     return "About";
