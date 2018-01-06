@@ -171,7 +171,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
-                if (tab.getPosition() == 4) {
+                if (tab.getPosition() == 5) {
                     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
                     appBarLayout.setExpanded(false, true);
                     if (materialDesignFAM.isOpened()) {
@@ -183,7 +183,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 4) {
+                if (tab.getPosition() == 5) {
                     materialDesignFAM.setVisibility(View.VISIBLE);
                 }
             }
@@ -395,7 +395,7 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 8;
+            return 9;
         }
 
         @Override

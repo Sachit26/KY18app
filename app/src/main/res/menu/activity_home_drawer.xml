@@ -20,6 +20,10 @@
             android:icon="@drawable/ic_notifications"
             android:title="Notifications" />
         <item
+            android:id="@+id/nav_sponsors"
+            android:icon="@drawable/ic_sponsors"
+            android:title="Sponsors" />
+        <item
             android:id="@+id/nav_location"
             android:icon="@drawable/ic_map"
             android:title="Map" />
@@ -36,9 +40,6 @@
             android:icon="@drawable/ic_team"
             android:title="Team" />
     </group>
-    <item
-        android:id="@+id/nav_sponsors"
-        android:icon="@drawable/ic_sponsors"
-        android:title="Sponsors" />
+
 
 </menu>
