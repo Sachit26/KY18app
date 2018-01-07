@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "118192464795-k6gcqgvg2e44ah6buaoijm7287sq9o8o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.kashiyatra.kashiyatra18",
+            "certificate_hash": "f9bab3711dcc0624b37cd17d87143b4988f60729"
+          }
+        },
+        {
+          "client_id": "118192464795-57qcp1nthgdtbcg5ljdlughkh26tpmph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.kashiyatra.kashiyatra18",
+            "certificate_hash": "4e6c8b86891d3a9694f918b28dcc1b79481aa42f"
+          }
+        },
+        {
           "client_id": "118192464795-n7rmgasmg8aql7hc39dnmuu2c2i8g593.apps.googleusercontent.com",
           "client_type": 3
         },
@@ -48,6 +64,41 @@
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118192464795:android:ab8f0274943c7976",
+        "android_client_info": {
+          "package_name": "org.kashiyatra.ky18"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118192464795-n7rmgasmg8aql7hc39dnmuu2c2i8g593.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "118192464795-vecuni1viul67isji8rntokroivc9t6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTTCC2bUScwl_ytTHKCoc4XNLvCtEti08"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

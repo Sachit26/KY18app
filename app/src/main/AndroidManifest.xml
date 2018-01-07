@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.kashiyatra.kashiyatra18">
+    package="org.kashiyatra.ky18">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,14 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".services.MyFirebaseMessagingService"
+            android:name="org.kashiyatra.ky18.services.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".services.MyFirebaseInstanceIDService"
+            android:name="org.kashiyatra.ky18.services.MyFirebaseInstanceIDService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -52,23 +52,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name="org.kashiyatra.ky18.HomeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EventActivity"
+            android:name="org.kashiyatra.ky18.EventActivity"
             android:label="@string/title_activity_event"
-            android:parentActivityName=".EventListActivity"
+            android:parentActivityName="org.kashiyatra.ky18.EventListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.kashiyatra.kashiyatra18.EventListActivity" />
+                android:value="org.kashiyatra.ky18.EventListActivity" />
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="org.kashiyatra.ky18.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,23 +77,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="org.kashiyatra.ky18.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EventListActivity"
+            android:name="org.kashiyatra.ky18.EventListActivity"
             android:label="@string/title_activity_eventlist"
-            android:parentActivityName=".HomeActivity"
+            android:parentActivityName="org.kashiyatra.ky18.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.kashiyatra.kashiyatra18.HomeActivity" />
+                android:value="org.kashiyatra.ky18.HomeActivity" />
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name="org.kashiyatra.ky18.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="org.kashiyatra.ky18.LoginActivity"
             android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
     </application>
 

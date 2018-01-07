@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
-    tools:context="org.kashiyatra.kashiyatra18.fragments.RulesFragment">
+    tools:context="org.kashiyatra.ky18.fragments.RulesFragment">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

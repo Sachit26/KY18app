@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="org.kashiyatra.kashiyatra18.fragments.SponsorsFragment">
+    tools:context="org.kashiyatra.ky18.fragments.SponsorsFragment">
 
     <ImageView
         android:layout_width="match_parent"

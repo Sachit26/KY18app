@@ -4,7 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kashiyatra.kashiyatra18.LoginActivity">
+    tools:context="org.kashiyatra.ky18.LoginActivity">
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

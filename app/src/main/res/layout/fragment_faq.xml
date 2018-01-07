@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="org.kashiyatra.kashiyatra18.fragments.EventsFragment">
+    tools:context="org.kashiyatra.ky18.fragments.EventsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/faq_recycler_view"

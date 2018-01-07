@@ -6,11 +6,11 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 2
+      "versionCode": 1
     },
     "path": "app-release.apk",
     "properties": {
-      "packageId": "org.kashiyatra.kashiyatra18",
+      "packageId": "org.kashiyatra.ky18",
       "split": "",
       "minSdkVersion": "19"
     }

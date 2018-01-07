@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kashiyatra.kashiyatra18.EventListActivity">
+    tools:context="org.kashiyatra.ky18.EventListActivity">
 
     <ImageView
         android:id="@+id/background_image_view"
