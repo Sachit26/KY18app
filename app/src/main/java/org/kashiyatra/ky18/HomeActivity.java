@@ -43,6 +43,7 @@ import org.kashiyatra.ky18.fragments.MapFragment;
 import org.kashiyatra.ky18.fragments.ScheduleFragment;
 import org.kashiyatra.ky18.fragments.SponsorsFragment;
 import org.kashiyatra.ky18.fragments.TeamFragment;
+import org.kashiyatra.ky18.fragments.UpdatesFragment;
 
 import static java.lang.Math.min;
 
@@ -121,6 +122,7 @@ public class HomeActivity extends AppCompatActivity
                     .load(prefs.getString("profilePic", ""))
                     .apply(new RequestOptions()
                             .placeholder(R.drawable.person)
+                            .error(R.drawable.person)
                             .centerCrop()
                             .dontAnimate()
                             .dontTransform())
@@ -170,7 +172,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 navigationView.getMenu().getItem(tab.getPosition()).setChecked(true);
-                if (tab.getPosition() == 4) {
+                if (tab.getPosition() == 5) {
                     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
                     appBarLayout.setExpanded(false, true);
                     if (materialDesignFAM.isOpened()) {
@@ -182,7 +184,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 4) {
+                if (tab.getPosition() == 5) {
                     materialDesignFAM.setVisibility(View.VISIBLE);
                 }
             }
@@ -293,26 +295,29 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_about:
                 mViewPager.setCurrentItem(0);
                 break;
-            case R.id.nav_events:
+            case R.id.nav_updates:
                 mViewPager.setCurrentItem(1);
                 break;
-            case R.id.nav_schedule:
+            case R.id.nav_events:
                 mViewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_sponsors:
+            case R.id.nav_schedule:
                 mViewPager.setCurrentItem(3);
                 break;
-            case R.id.nav_location:
+            case R.id.nav_sponsors:
                 mViewPager.setCurrentItem(4);
                 break;
-            case R.id.nav_faq:
+            case R.id.nav_location:
                 mViewPager.setCurrentItem(5);
                 break;
-            case R.id.nav_helpline:
+            case R.id.nav_faq:
                 mViewPager.setCurrentItem(6);
                 break;
-            case R.id.nav_team:
+            case R.id.nav_helpline:
                 mViewPager.setCurrentItem(7);
+                break;
+            case R.id.nav_team:
+                mViewPager.setCurrentItem(8);
                 break;
             default:
                 break;
@@ -369,18 +374,20 @@ public class HomeActivity extends AppCompatActivity
                 case 0:
                     return AboutFragment.newInstance();
                 case 1:
-                    return EventsFragment.newInstance();
+                    return UpdatesFragment.newInstance();
                 case 2:
-                    return ScheduleFragment.newInstance();
+                    return EventsFragment.newInstance();
                 case 3:
-                    return SponsorsFragment.newInstance();
+                    return ScheduleFragment.newInstance();
                 case 4:
-                    return MapFragment.newInstance();
+                    return SponsorsFragment.newInstance();
                 case 5:
-                    return FaqFragment.newInstance();
+                    return MapFragment.newInstance();
                 case 6:
-                    return HelplineFragment.newInstance();
+                    return FaqFragment.newInstance();
                 case 7:
+                    return HelplineFragment.newInstance();
+                case 8:
                     return TeamFragment.newInstance();
                 default:
                     return AboutFragment.newInstance();
@@ -389,7 +396,7 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 8;
+            return 9;
         }
 
         @Override
@@ -398,18 +405,20 @@ public class HomeActivity extends AppCompatActivity
                 case 0:
                     return "About";
                 case 1:
-                    return "Events";
+                    return "Updates";
                 case 2:
-                    return "Schedule";
+                    return "Events";
                 case 3:
-                    return "Sponsors";
+                    return "Schedule";
                 case 4:
-                    return "Map";
+                    return "Sponsors";
                 case 5:
-                    return "FAQ";
+                    return "Map";
                 case 6:
-                    return "Helpline";
+                    return "FAQ";
                 case 7:
+                    return "Helpline";
+                case 8:
                     return "Team";
                 default:
                     return "About";

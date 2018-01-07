@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_updates"
+            android:icon="@drawable/ic_about"
             android:title="About" />
+        <item
+            android:id="@+id/nav_updates"
+            android:icon="@drawable/ic_updates"
+            android:title="Updates" />
         <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_trophy"
@@ -15,10 +18,6 @@
             android:id="@+id/nav_schedule"
             android:icon="@drawable/ic_schedule"
             android:title="Schedule" />
-        <item
-            android:id="@+id/nav_notifications"
-            android:icon="@drawable/ic_notifications"
-            android:title="Notifications" />
         <item
             android:id="@+id/nav_sponsors"
             android:icon="@drawable/ic_sponsors"
