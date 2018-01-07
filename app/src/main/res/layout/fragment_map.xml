@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:src="@drawable/ic_hostel"
-            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorNormal="#808000"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Hostels"
             fab:fab_size="mini" />
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event"
-            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorNormal="#808000"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Event Venues"
             fab:fab_size="mini" />
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_pronite"
-            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorNormal="#808000"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="ProNite Venues"
             fab:fab_size="mini" />
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_atm"
-            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorNormal="#808000"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="ATMs"
             fab:fab_size="mini" />
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_register"
-            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorNormal="#808000"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_label="Registration Desk"
             fab:fab_size="mini" />
