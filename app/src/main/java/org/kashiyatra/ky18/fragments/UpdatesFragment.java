@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -100,9 +101,12 @@ public class UpdatesFragment extends Fragment {
                 }
             }
 
-            RecyclerView.Adapter updateAdapter = new UpdateAdapter(getContext(), bodies, imageUrls, links, times);
-
-            updateRecyclerView.swapAdapter(updateAdapter, false);
+            if (bodies.length > 0) {
+                RecyclerView.Adapter updateAdapter = new UpdateAdapter(getContext(), bodies, imageUrls, links, times);
+                updateRecyclerView.swapAdapter(updateAdapter, false);
+            } else {
+                Toast.makeText(getActivity(), "Could not connect to server", Toast.LENGTH_SHORT).show();
+            }
             mSwipeRefreshLayout.setRefreshing(false);
         }
     }
