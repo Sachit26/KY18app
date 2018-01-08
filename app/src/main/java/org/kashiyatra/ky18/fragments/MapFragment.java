@@ -25,6 +25,7 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -36,6 +37,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.kashiyatra.ky18.R;
 import org.kashiyatra.ky18.utils.PermissionUtils;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 public class MapFragment extends Fragment implements
@@ -107,6 +110,8 @@ public class MapFragment extends Fragment implements
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        MapsInitializer.initialize(getApplicationContext());
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager()
