@@ -65,7 +65,7 @@ public class UpdatesFragment extends Fragment {
         protected JSONArray doInBackground(Void... voids) {
             try {
                 Request request = new Request.Builder()
-                        .url("http://172.17.44.134:8000/api/mobile/notifications/")
+                        .url("https://kashiyatra.herokuapp.com/api/mobile/notifications/")
                         .build();
                 OkHttpClient client = new OkHttpClient();
                 Response response = client.newCall(request).execute();
