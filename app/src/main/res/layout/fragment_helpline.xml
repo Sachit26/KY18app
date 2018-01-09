@@ -24,8 +24,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 
@@ -62,8 +63,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 
@@ -100,8 +102,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 

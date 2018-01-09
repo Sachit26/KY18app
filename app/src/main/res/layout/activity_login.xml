@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/ky_number_input"
-        android:background="#000000"
+        android:background="@color/transparent"
         android:drawableTop="@drawable/ic_submit"
         android:visibility="gone" />
 
@@ -127,7 +127,7 @@
         android:ems="10"
         android:inputType="textVisiblePassword"
         android:textAllCaps="true"
-        android:textColor="#a9a8a2"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHint="#a9a8a2"
         android:textSize="27sp"
         android:visibility="gone" />
