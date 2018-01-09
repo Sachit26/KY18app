@@ -1,5 +1,7 @@
 package org.kashiyatra.ky18.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.kashiyatra.ky18.R;
+import org.kashiyatra.ky18.SplashActivity;
 import org.kashiyatra.ky18.adapters.UpdateAdapter;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +30,8 @@ import okhttp3.Response;
 public class UpdatesFragment extends Fragment {
     RecyclerView updateRecyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    SharedPreferences prefs;
+    SharedPreferences.Editor prefEditor;
 
     public UpdatesFragment() {
         // Required empty public constructor
@@ -43,6 +48,7 @@ public class UpdatesFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_updates, container, false);
+        prefs = getActivity().getSharedPreferences(SplashActivity.storeUserDetails, Context.MODE_PRIVATE);
         mSwipeRefreshLayout = rootView.findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimaryDark);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -71,6 +77,9 @@ public class UpdatesFragment extends Fragment {
                 OkHttpClient client = new OkHttpClient();
                 Response response = client.newCall(request).execute();
                 JSONArray updates = new JSONArray(response.body().string());
+                prefEditor = prefs.edit();
+                prefEditor.putString("updates_json", updates.toString());
+                prefEditor.commit();
                 return updates;
 
             } catch (Exception e) {
@@ -82,6 +91,22 @@ public class UpdatesFragment extends Fragment {
 
         @Override
         protected void onPostExecute(JSONArray updates) {
+            if (updates.length() == 0) {
+                try {
+                    Toast.makeText(getActivity(), "Could not connect to server", Toast.LENGTH_SHORT).show();
+                    updates = new JSONArray(prefs.getString("updates_json", "[\n" +
+                            "    {\n" +
+                            "        \"body\": \"No new updates. Check us out later\",\n" +
+                            "        \"image_url\": null,\n" +
+                            "        \"link\": \"http://www.kashiyatra.org/\",\n" +
+                            "        \"timestamp\": \"2017-12-31T18:30:00Z\"\n" +
+                            "    }\n" +
+                            "]"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("UpdatesFragment", e.toString());
+                }
+            }
             String[] bodies = new String[updates.length()];
             String[] imageUrls = new String[updates.length()];
             String[] links = new String[updates.length()];
@@ -101,12 +126,8 @@ public class UpdatesFragment extends Fragment {
                 }
             }
 
-            if (bodies.length > 0) {
-                RecyclerView.Adapter updateAdapter = new UpdateAdapter(getContext(), bodies, imageUrls, links, times);
-                updateRecyclerView.swapAdapter(updateAdapter, false);
-            } else {
-                Toast.makeText(getActivity(), "Could not connect to server", Toast.LENGTH_SHORT).show();
-            }
+            RecyclerView.Adapter updateAdapter = new UpdateAdapter(getContext(), bodies, imageUrls, links, times);
+            updateRecyclerView.swapAdapter(updateAdapter, false);
             mSwipeRefreshLayout.setRefreshing(false);
         }
     }

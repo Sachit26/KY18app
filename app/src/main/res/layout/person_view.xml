@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:padding="5dp"
             android:src="@drawable/person"
-            card_view:civ_border_color="#909000"
+            card_view:civ_border_color="@color/colorPrimary"
             card_view:civ_border_width="2dp" />
 
 

@@ -21,6 +21,12 @@
                 style="@style/Department_Header"
                 android:text="REGISTRATION" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
             <LinearLayout style="@style/CG_Row">
 
                 <LinearLayout style="@style/CG_Holder">
@@ -53,6 +59,12 @@
                 style="@style/Department_Header"
                 android:text="EVENTS" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
             <LinearLayout style="@style/CG_Row">
 
                 <LinearLayout style="@style/CG_Holder">
@@ -84,6 +96,12 @@
             <TextView
                 style="@style/Department_Header"
                 android:text="PRONITES" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <LinearLayout style="@style/CG_Row">
 

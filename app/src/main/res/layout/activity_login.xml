@@ -14,17 +14,19 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:contentDescription="@null"
         android:scaleType="fitEnd"
-        android:src="@drawable/graveyard" />
+        android:src="@drawable/movingmist" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@null"
-        android:paddingBottom="150dp"
+        android:paddingBottom="120dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
         android:scaleType="fitCenter"
         android:src="@drawable/logo" />
 
@@ -34,6 +36,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fb_login_button"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@id/ky_login_button"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textAllCaps="true"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/ky_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@+id/register_linear_layout"
+        android:layout_alignEnd="@id/fb_login_button"
+        android:layout_alignStart="@id/fb_login_button"
+        android:background="#909000"
+        android:drawableStart="@drawable/ic_ky"
+        android:paddingEnd="36dp"
+        android:text="Log in with KY ID"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:id="@+id/register_linear_layout"
@@ -52,7 +90,7 @@
             android:layout_weight="1"
             android:text="Register Later"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <Button
@@ -63,45 +101,9 @@
             android:layout_weight="1"
             android:text="Register Now"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
     </LinearLayout>
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/fb_login_button"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_above="@id/ky_login_button"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:textAllCaps="true"
-        android:textSize="15sp" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/google_login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/fb_login_button"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp" />
-
-    <Button
-        android:id="@+id/ky_login_button"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_above="@+id/register_linear_layout"
-        android:layout_alignEnd="@id/fb_login_button"
-        android:layout_alignStart="@id/fb_login_button"
-        android:background="#909000"
-        android:drawableStart="@drawable/ic_ky"
-        android:paddingEnd="36dp"
-        android:text="Log in with KY ID"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
 
     <Button
         android:id="@+id/login_submit"

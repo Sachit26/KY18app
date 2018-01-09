@@ -430,6 +430,7 @@
         <item>Deepesh K.Meena</item>
         <item>Sumit Nayak</item>
         <item>Anuj</item>
+        <item>Mayank Gupta</item>
         <item>Parth Sharma</item>
         <item>Kanvar Kohli</item>
         <item>Prakhar Dhawan</item>
@@ -440,7 +441,6 @@
         <item>Arjun Mehra</item>
         <item>V Hemanth Sai</item>
         <item>Shubham Jain</item>
-        <item>Mayank Gupta</item>
         <item>Shravani Eleswarapu</item>
         <item>Peeyush Bakolia</item>
     </string-array>
@@ -462,6 +462,7 @@
         <item>Publicity</item>
         <item>Publicity</item>
         <item>Publicity</item>
+        <item>Social Media</item>
         <item>Public Relations</item>
         <item>Public Relations</item>
         <item>Events</item>
@@ -471,10 +472,9 @@
         <item>Web Team</item>
         <item>Web Team</item>
         <item>Android App</item>
-        <item>Creative</item>
-        <item>Media</item>
-        <item>Creative</item>
-        <item>Creative</item>
+        <item>Creative Team</item>
+        <item>Creative Team</item>
+        <item>Creative Team</item>
     </string-array>
 
     <string-array name="team_photo_urls">
@@ -490,23 +490,23 @@
         <item>https://image.ibb.co/dR2wrb/rajesh.jpg</item>
         <item>https://image.ibb.co/njZRrb/sumanth.jpg</item>
         <item>https://image.ibb.co/efrd4w/kalpesh.jpg</item>
-        <item>https://image.ibb.co/ftJVHG/sanprit.jpg</item>
+        <item>https://image.ibb.co/c6nDE6/sanprit.jpg</item>
         <item>https://image.ibb.co/jveWPw/deepesh.jpg</item>
         <item>https://image.ibb.co/fhVMPw/sumit.jpg</item>
         <item>https://image.ibb.co/htf5jw/anuj.jpg</item>
+        <item>https://image.ibb.co/dFyCrm/mayank.jpg</item>
         <item>https://image.ibb.co/mwtfHG/parth.jpg</item>
         <item>https://image.ibb.co/nnj6Pw/person.png</item>
         <item>https://image.ibb.co/dESUBb/prakhar.jpg</item>
         <item>https://image.ibb.co/eCF5jw/manda.jpg</item>
         <item>https://image.ibb.co/b8vucG/nikhil.jpg</item>
         <item>https://image.ibb.co/hDy84w/sagar.jpg</item>
-        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/isEFSR/rishabh.jpg</item>
         <item>https://image.ibb.co/k5orPw/arjun.jpg</item>
-        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/cpje46/hemanth.jpg</item>
         <item>https://image.ibb.co/mqnPcG/shubham.jpg</item>
-        <item>https://image.ibb.co/nnj6Pw/person.png</item>
-        <item>https://image.ibb.co/nnj6Pw/person.png</item>
-        <item>https://image.ibb.co/nnj6Pw/person.png</item>
+        <item>https://image.ibb.co/n8Qdgm/shravani.jpg</item>
+        <item>https://image.ibb.co/hLqpnR/peeyush.jpg</item>
     </string-array>
 
     <string-array name="team_emails">
@@ -526,6 +526,7 @@
         <item>deepesh.kmeena.eee15@iitbhu.ac.in</item>
         <item>sumit.nayak.met15@iitbhu.ac.in</item>
         <item>anujkumar.singh.bce15@iitbhu.ac.in</item>
+        <item>mayank.gupta.phe15@iitbhu.ac.in</item>
         <item>parth.sharma.civ15@iitbhu.ac.in</item>
         <item>kanvars.kohli.bce15@iitbhu.ac.in</item>
         <item>prakhar.student.met15@iitbhu.ac.in</item>
@@ -536,10 +537,10 @@
         <item>arjun.mehra.mec15@iitbhu.ac.in</item>
         <item>vhemanth.sai.eee15@iitbhu.ac.in</item>
         <item>shubham.jain.che15@iitbhu.ac.in</item>
-        <item>mayank.gupta.phe15@iitbhu.ac.in</item>
         <item>eleswarapu.shravani.che15@iitbhu.ac.in</item>
         <item>peeyush.bakolia.eee15@iitbhu.ac.in</item>
     </string-array>
+
     <string-array name="team_fblinks">
         <item>https://www.facebook.com/kalyan.reddy23</item>
         <item>https://www.facebook.com/sagarjaingarg</item>
@@ -557,6 +558,7 @@
         <item>https://www.facebook.com/deepesh.meena.7798</item>
         <item>https://www.facebook.com/sumit.nayak.33</item>
         <item>https://www.facebook.com/profile.php?id=100008877452509</item>
+        <item>https://www.facebook.com/g.m.r.mayank</item>
         <item>https://www.facebook.com/parth.0125</item>
         <item>https://www.facebook.com/profile.php?id=100006264829259</item>
         <item>https://www.facebook.com/codetillinfinty</item>
@@ -567,7 +569,6 @@
         <item>https://www.facebook.com/arjunmehra1997</item>
         <item>https://www.facebook.com/vhemanth.sai</item>
         <item>https://www.facebook.com/shubham.jain.165685</item>
-        <item>https://www.facebook.com/g.m.r.mayank</item>
         <item>https://www.facebook.com/shravani.eleswarapu</item>
         <item>https://www.facebook.com/peeyush.verma.161?ref=br_rs</item>
     </string-array>
@@ -589,6 +590,7 @@
         <item>https://www.linkedin.com/</item>
         <item>https://www.linkedin.com/in/sumit-nayak-105120123/</item>
         <item>https://www.linkedin.com/</item>
+        <item>https://www.linkedin.com/in/mayank-gupta-126092132/</item>
         <item>https://www.linkedin.com/in/parth-sharma-0a1652154/</item>
         <item>https://www.linkedin.com/in/kanvar-kohli-0b5b1a130/</item>
         <item>https://www.linkedin.com/in/prakhar-dhawan-51b6b8109/</item>
@@ -599,7 +601,6 @@
         <item>https://www.linkedin.com/in/arjun-mehra-1513ba122/</item>
         <item>https://www.linkedin.com/in/hemanth-sai-veluvolu-941aa0125/</item>
         <item>https://www.linkedin.com/in/shubham-jain-023637105/</item>
-        <item>https://www.linkedin.com/in/mayank-gupta-126092132/</item>
         <item>https://www.linkedin.com/in/shravani-eleswarapu-a52b1a12a/</item>
         <item>https://www.linkedin.com/in/peeyush-bakolia-a67865135/</item>
     </string-array>
