@@ -1,15 +1,4 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sponsor_recycler"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context="org.kashiyatra.ky18.fragments.SponsorsFragment">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@null"
-        android:padding="20dp"
-        android:src="@drawable/coming_soon" />
-
-</android.support.v4.widget.NestedScrollView>
+    android:layout_height="wrap_content" />
