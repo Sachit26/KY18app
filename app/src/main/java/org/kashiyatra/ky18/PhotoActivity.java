@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 public class PhotoActivity extends AppCompatActivity {
 
     @Override
@@ -14,22 +17,35 @@ public class PhotoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         int day = intent.getIntExtra("day", 1);
-        int scheduleResourceId;
+        int placeholderId;
+        String scheduleUrl;
         switch (day) {
             case 2:
-                scheduleResourceId = R.drawable.day2;
+                placeholderId = R.drawable.day2;
+                scheduleUrl = "https://image.ibb.co/gfEZhR/day2.jpg";
                 getSupportActionBar().setTitle("Day 2");
                 break;
             case 3:
-                scheduleResourceId = R.drawable.day3;
+                placeholderId = R.drawable.day3;
+                scheduleUrl = "https://image.ibb.co/hjH9Gm/day3.jpg";
                 getSupportActionBar().setTitle("Day 3");
                 break;
             default:
-                scheduleResourceId = R.drawable.day1;
+                placeholderId = R.drawable.day1;
+                scheduleUrl = "https://image.ibb.co/iBP0NR/day1.jpg";
                 getSupportActionBar().setTitle("Day 1");
         }
 
         ImageView photoView = findViewById(R.id.photo_view);
-        photoView.setImageResource(scheduleResourceId);
+
+        Glide.with(this)
+                .load(scheduleUrl)
+                .apply(new RequestOptions()
+                        .placeholder(placeholderId)
+                        .error(placeholderId)
+                        .centerCrop()
+                        .dontAnimate()
+                        .dontTransform())
+                .into(photoView);
     }
 }
