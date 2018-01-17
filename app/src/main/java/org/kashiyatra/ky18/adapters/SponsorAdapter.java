@@ -18,11 +18,10 @@ import org.kashiyatra.ky18.R;
  */
 
 public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHolder> {
-    private String[] mSponsorNames, mSponsorTypes, mLogoUrls;
+    private String[] mSponsorTypes, mLogoUrls;
     private Context context;
 
-    public SponsorAdapter(Context context, String[] names, String[] types, String[] logoUrls) {
-        mSponsorNames = names;
+    public SponsorAdapter(Context context, String[] types, String[] logoUrls) {
         mSponsorTypes = types;
         mLogoUrls = logoUrls;
         this.context = context;
@@ -37,7 +36,6 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(SponsorAdapter.ViewHolder holder, final int position) {
-        holder.mNameTextView.setText(mSponsorNames[position]);
         holder.mTypeTextView.setText(mSponsorTypes[position]);
 
         Glide.with(context)
@@ -51,20 +49,19 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return mSponsorNames.length;
+        return mLogoUrls.length;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View mView;
-        public TextView mNameTextView, mTypeTextView;
+        public TextView mTypeTextView;
         public ImageView mLogoView;
 
         public ViewHolder(View v) {
             super(v);
             mView = v;
-            mNameTextView = v.findViewById(R.id.sponsor_name);
             mTypeTextView = v.findViewById(R.id.sponsor_type);
-            mLogoView = v.findViewById(R.id.sponsor_image);
+            mLogoView = v.findViewById(R.id.sponsor_logo);
         }
     }
 }

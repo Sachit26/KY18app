@@ -2,7 +2,6 @@ package org.kashiyatra.ky18.adapters;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,13 +40,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.titleTextView.setText(mNames[position]);
-        holder.titleTextView.setTypeface(Typeface.createFromAsset(context.getAssets(), "HelveticaNeue-MediumCond.otf"));
+//        holder.titleTextView.setTypeface(Typeface.createFromAsset(context.getAssets(), "HelveticaNeue-MediumCond.otf"));
         holder.descriptionTextView.setText(mDescriptions[position]);
         holder.backgroundImageView.setImageResource(mBackgrounds.getResourceId(position, -1));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public View mView;
+        View mView;
         TextView titleTextView, descriptionTextView;
         ImageView backgroundImageView;
 

@@ -13,17 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <service
-            android:name="org.kashiyatra.ky18.services.MyFirebaseMessagingService"
+            android:name=".services.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
-            android:name="org.kashiyatra.ky18.services.MyFirebaseInstanceIDService"
+            android:name=".services.MyFirebaseInstanceIDService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -41,7 +39,6 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -54,55 +51,58 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="org.kashiyatra.ky18.HomeActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name="org.kashiyatra.ky18.EventActivity"
+            android:name=".EventActivity"
             android:label="@string/title_activity_event"
-            android:parentActivityName="org.kashiyatra.ky18.EventListActivity"
+            android:parentActivityName=".EventListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.kashiyatra.ky18.EventListActivity" />
         </activity>
-
         <activity
-            android:name="org.kashiyatra.ky18.SplashActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="org.kashiyatra.ky18.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="org.kashiyatra.ky18.EventListActivity"
+            android:name=".EventListActivity"
             android:label="@string/title_activity_eventlist"
-            android:parentActivityName="org.kashiyatra.ky18.HomeActivity"
+            android:parentActivityName=".HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.kashiyatra.ky18.HomeActivity" />
         </activity>
-
         <activity
-            android:name="org.kashiyatra.ky18.RegistrationActivity"
+            android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName="org.kashiyatra.ky18.LoginActivity"
+            android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".PhotoActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.kashiyatra.ky18.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

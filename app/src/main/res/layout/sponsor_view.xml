@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    app:cardBackgroundColor="@color/colorSecondary"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
 
@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/sponsor_image"
+            android:id="@+id/sponsor_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -31,24 +31,14 @@
             android:src="@drawable/abhinay"/>
 
         <TextView
-            android:id="@+id/sponsor_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:textSize="16sp"
-            android:text="IIT BHU"/>
-
-        <TextView
             android:id="@+id/sponsor_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:fontFamily="@fon"
             android:padding="5dp"
-            android:textSize="16sp"
-            android:text="Title Sponsor"/>
+            android:text="Title Sponsor"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -1,7 +1,6 @@
 package org.kashiyatra.ky18.adapters;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,14 +39,14 @@ public class SubeventsAdapter extends RecyclerView.Adapter<SubeventsAdapter.View
     public void onBindViewHolder(SubeventsAdapter.ViewHolder holder, int position) {
 
         holder.titleTextView.setText(mNames[position]);
-        holder.titleTextView.setTypeface(Typeface.createFromAsset(mContext.getAssets(), "OpenSans-Semibold.ttf"));
+//        holder.titleTextView.setTypeface(Typeface.createFromAsset(mContext.getAssets(), "OpenSans-Semibold.ttf"));
         holder.descTextView.setText(mDescs[position]);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
         TextView descTextView;
-        private View mView;
+        View mView;
 
         private ViewHolder(View v) {
             super(v);

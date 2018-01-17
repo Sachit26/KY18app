@@ -2,7 +2,7 @@ package org.kashiyatra.ky18.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,14 +32,18 @@ public class SponsorsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_sponsors, container, false);
 
-
-        String[] names = getResources().getStringArray(R.array.sponsor_names);
         String[] types = getResources().getStringArray(R.array.sponsor_types);
         String[] logoUrls = getResources().getStringArray(R.array.sponsor_logo_urls);
 
         RecyclerView mSponsorRecyclerView = rootView.findViewById(R.id.sponsor_recycler);
-        RecyclerView.LayoutManager mSponsorLayoutManager = new LinearLayoutManager(getActivity());
-        RecyclerView.Adapter mSponsorAdapter = new SponsorAdapter(getContext(), names, types, logoUrls);
+        GridLayoutManager mSponsorLayoutManager = new GridLayoutManager(getActivity(), 2);
+        mSponsorLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position < 4 ? 2 : 1;
+            }
+        });
+        RecyclerView.Adapter mSponsorAdapter = new SponsorAdapter(getContext(), types, logoUrls);
 
         mSponsorRecyclerView.setLayoutManager(mSponsorLayoutManager);
         mSponsorRecyclerView.setAdapter(mSponsorAdapter);

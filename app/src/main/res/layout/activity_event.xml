@@ -53,7 +53,7 @@
         app:tabIndicatorColor="@color/colorAccent"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/white" />
+        app:tabTextAppearance="@style/myTabText" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/event_viewpager"

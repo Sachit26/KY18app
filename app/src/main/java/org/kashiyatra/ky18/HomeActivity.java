@@ -3,7 +3,6 @@ package org.kashiyatra.ky18;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,7 +23,6 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,7 +69,7 @@ public class HomeActivity extends AppCompatActivity
 
         final TextView titleTextView = findViewById(R.id.title_view);
         titleTextView.setText(getTitle());
-        titleTextView.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Semibold.ttf"));
+//        titleTextView.setTypeface(Typeface.createFromAsset(getAssets(), "opensans_semibold.ttf"));
 
         prefs = getSharedPreferences(SplashActivity.storeUserDetails, Context.MODE_PRIVATE);
         isLoggedIn = prefs.getBoolean("isLoggedIn", false);
@@ -195,7 +193,7 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        changeTabsFont();
+//        changeTabsFont();
     }
 
     private void setAppBarOffset(int offsetPx) {
@@ -344,22 +342,22 @@ public class HomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void changeTabsFont() {
-
-        ViewGroup vg = (ViewGroup) mTabLayout.getChildAt(0);
-        int tabsCount = vg.getChildCount();
-        for (int j = 0; j < tabsCount; j++) {
-            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
-            int tabChildsCount = vgTab.getChildCount();
-            for (int i = 0; i < tabChildsCount; i++) {
-                View tabViewChild = vgTab.getChildAt(i);
-                if (tabViewChild instanceof TextView) {
-                    ((TextView) tabViewChild).setTypeface(Typeface.createFromAsset(getAssets(), "BebasNeue Regular.ttf"), Typeface.NORMAL);
-                    ((TextView) tabViewChild).setTextSize(getResources().getDimension(R.dimen.desc_text_size) * 1.5f);
-                }
-            }
-        }
-    }
+//    private void changeTabsFont() {
+//
+//        ViewGroup vg = (ViewGroup) mTabLayout.getChildAt(0);
+//        int tabsCount = vg.getChildCount();
+//        for (int j = 0; j < tabsCount; j++) {
+//            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+//            int tabChildsCount = vgTab.getChildCount();
+//            for (int i = 0; i < tabChildsCount; i++) {
+//                View tabViewChild = vgTab.getChildAt(i);
+//                if (tabViewChild instanceof TextView) {
+//                    ((TextView) tabViewChild).setTypeface(Typeface.createFromAsset(getAssets(), "BebasNeue Regular.ttf"), Typeface.NORMAL);
+//                    ((TextView) tabViewChild).setTextSize(getResources().getDimension(R.dimen.desc_text_size) * 1.5f);
+//                }
+//            }
+//        }
+//    }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
 
