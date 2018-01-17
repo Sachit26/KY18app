@@ -43,7 +43,7 @@ public class PhotoActivity extends AppCompatActivity {
                 .apply(new RequestOptions()
                         .placeholder(placeholderId)
                         .error(placeholderId)
-                        .centerCrop()
+                        .fitCenter()
                         .dontAnimate()
                         .dontTransform())
                 .into(photoView);

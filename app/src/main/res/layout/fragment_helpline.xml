@@ -19,13 +19,13 @@
 
             <TextView
                 style="@style/Department_Header"
-                android:text="REGISTRATION" />
+                android:text="Emergency Contacts" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
@@ -34,61 +34,66 @@
 
                     <TextView
                         style="@style/CG_Name"
-                        android:text="Sai Sumanth" />
+                        android:text="Sumanth" />
 
                     <TextView
                         style="@style/CG_Contact"
                         android:text="+91-9493690659" />
+
+                    <TextView
+                        style="@style/CG_Position"
+                        android:text="Helpdesk" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/CG_Holder">
 
                     <TextView
                         style="@style/CG_Name"
-                        android:text="Kalpesh Bansal" />
-
-                    <TextView
-                        style="@style/CG_Contact"
-                        android:text="+91-7233013288" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout style="@style/Department">
-
-            <TextView
-                style="@style/Department_Header"
-                android:text="EVENTS" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:src="@color/gold" />
-
-            <LinearLayout style="@style/CG_Row">
-
-                <LinearLayout style="@style/CG_Holder">
-
-                    <TextView
-                        style="@style/CG_Name"
-                        android:text="Prakhar Dhawan" />
+                        android:text="Prakhar" />
 
                     <TextView
                         style="@style/CG_Contact"
                         android:text="+91-7080486918" />
+
+                    <TextView
+                        style="@style/CG_Position"
+                        android:text="Events" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Department">
+
+            <LinearLayout style="@style/CG_Row">
+
+                <LinearLayout style="@style/CG_Holder">
+
+                    <TextView
+                        style="@style/CG_Name"
+                        android:text="Sanprit" />
+
+                    <TextView
+                        style="@style/CG_Contact"
+                        android:text="+91-8090975639" />
+
+                    <TextView
+                        style="@style/CG_Position"
+                        android:text="Pronites" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/CG_Holder">
 
                     <TextView
                         style="@style/CG_Name"
-                        android:text="Arunoday" />
+                        android:text="Kapil" />
 
                     <TextView
                         style="@style/CG_Contact"
-                        android:text="+91-8756353318" />
+                        android:text="+91-7239013709" />
+
+                    <TextView
+                        style="@style/CG_Position"
+                        android:text="Hospitality" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -97,13 +102,13 @@
 
             <TextView
                 style="@style/Department_Header"
-                android:text="PRONITES" />
+                android:text="Women Helpline" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
@@ -112,11 +117,11 @@
 
                     <TextView
                         style="@style/CG_Name"
-                        android:text="Sanprit Nayan" />
+                        android:text="Shravani" />
 
                     <TextView
                         style="@style/CG_Contact"
-                        android:text="+91-8090975639" />
+                        android:text="+91-7233014202" />
                 </LinearLayout>
 
 
@@ -128,6 +133,13 @@
             <TextView
                 style="@style/Department_Header"
                 android:text="For any other queries" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:src="@color/gold" />
 
             <LinearLayout style="@style/CG_Row">
 

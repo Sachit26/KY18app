@@ -34,7 +34,6 @@
             android:id="@+id/sponsor_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@fon"
             android:padding="5dp"
             android:text="Title Sponsor"
             android:textAlignment="center"
