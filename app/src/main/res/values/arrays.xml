@@ -372,6 +372,143 @@
         <item>@drawable/third_eye</item>
     </integer-array>
 
+    <!--    String subevent schedules-->
+
+    <string-array name="natraj_subevent_schedules">
+        <item>Prelimns Day 3 9.00 AM \nFinals Day 3 4.00 PM</item>
+        <item>Prelimns Day 2 9.00 AM \nDay 2 3.00 PM</item>
+        <item>Prelimns Day 2 9.00 AM \nFinals Day 3 3.00 PM</item>
+        <item>Day 3 1.30 PM</item>
+    </string-array>
+
+    <string-array name="abhinay_subevent_schedules">
+        <item>Day 2 8.00 AM \nDay 3 8.00 AM</item>
+        <item>Day 2 10.00 AM \nDay 3 9.00 AM</item>
+        <item>Day 1 8.00 AM</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_schedules">
+        <item>Prelimns Day 2 9.00 AM \nFinals Day 2 2.00 PM</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_schedules">
+        <item>Day 2 8.00 AM \nFinals Day 3 1.00 PM</item>
+        <item>Day 1 9.00 AM</item>
+        <item>Day 3 9.00 AM</item>
+        <item>Day 3 3.00 PM</item>
+        <item>Day 1 11.00 AM</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_schedules">
+        <item>Finals Day 1 2.00 PM</item>
+        <item>Finals Day 1 2.00 PM</item>
+        <item>Finals Day 1 2.00 PM</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_schedules">
+        <item>Rapid Fire</item>
+        <item>Day 1 2.00 PM</item>
+        <item>Day 1 5.00 PM /nSubmission Day 2 5.00 PM</item>
+        <item>Day 3 2.00 PM</item>
+        <item>Day 3 9.00 AM</item>
+        <item>Day 3 9.00 AM</item>
+        <item>Day 1 9.00 AM</item>
+        <item>Day 1 9.00 AM</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_schedules">
+        <item>Day 1 10.00 AM</item>
+        <item>Prelimns Day 1 12.00 PM \nSemi Final Day 2 12.00 PM \nFinals Day 3 1.00 PM</item>
+        <item>Prelimns Day 2 12.00 PM \nFinals Day 3 1.00 PM</item>
+        <item>Day 2 2.00 PM</item>
+        <item>Day 3 10.00 AM</item>
+        <item>Prelimns Day 1 12.00 PM \nFinals Day 2 12.00PM</item>
+        <item>Day 1 12.00 PM</item>
+        <item>Day 3 3.00 PM</item>
+        <item>Hindi Day 1 4.00 PM \nEnglish Day 2 10.00 AM</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_schedules">
+        <item>Day 2 1.30 PM</item>
+        <item>Day 2 9.00 AM</item>
+        <item>Day 3 11.00 AM</item>
+        <item>Day 3 3.30 PM</item>
+        <item>Day 1 3.30 PM</item>
+    </string-array>
+
+    <string-array name="xtasy_subevent_schedules">
+        <item>Third Eye</item>
+    </string-array>
+    
+    <!--   Venue Names  -->
+
+    <string-array name="natraj_subevent_venues">
+        <item>Bliss</item>
+        <item>Cut-a-rug</item>
+        <item>Ecstasy</item>
+        <item>Nritya</item>
+    </string-array>
+
+    <string-array name="abhinay_subevent_venues">
+        <item>Rangmanch</item>
+        <item>Asmita</item>
+        <item>Rajputana Grounds</item>
+    </string-array>
+
+    <string-array name="crosswindz_subevent_venues">
+        <item>Battle of Bands</item>
+    </string-array>
+
+    <string-array name="bandish_subevent_venues">
+        <item>Sur</item>
+        <item>SB Main Hall</item>
+        <item>Sanlayan</item>
+        <item>Kriti</item>
+        <item>SB</item>
+    </string-array>
+
+    <string-array name="mirage_subevent_venues">
+        <item>Design Elegante</item>
+        <item>Mr. KY</item>
+        <item>Miss KY</item>
+    </string-array>
+
+    <string-array name="toolika_subevent_venues">
+        <item>Rapid Fire</item>
+        <item>Spoil the Tees</item>
+        <item>Live Sketching</item>
+        <item>Vastra Shilp</item>
+        <item>Rangbaazi</item>
+        <item>Clay Modelling</item>
+        <item>SB Foyer</item>
+        <item>SB Foyer</item>
+    </string-array>
+
+    <string-array name="samwaad_subevent_venues">
+        <item>LT 3</item>
+        <item>Battlefront</item>
+        <item>Shipwreck Cove</item>
+        <item>The legend of Sir Speak-A-Lot</item>
+        <item>A Jesters Court</item>
+        <item>Vaad Vivaad</item>
+        <item>Alfaaz</item>
+        <item>Ashubhashan</item>
+        <item>What\'s the Word?</item>
+    </string-array>
+
+    <string-array name="enquizta_subevent_venues">
+        <item>India Quiz</item>
+        <item>General Quiz</item>
+        <item>Sports Quiz</item>
+        <item>Biz-Tech Quiz</item>
+        <item>MELA Quiz</item>
+    </string-array>
+
+    <string-array name="xtasy_subevent_venues">
+        <item>Third Eye</item>
+    </string-array>
+
+
     <!--    FAQs    -->
     <string-array name="faq_questions">
         <item>When is the next edition of Kashiyatra?</item>
