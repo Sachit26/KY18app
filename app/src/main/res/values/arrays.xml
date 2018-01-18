@@ -439,7 +439,7 @@
     <string-array name="xtasy_subevent_schedules">
         <item>Third Eye</item>
     </string-array>
-    
+
     <!--   Venue Names  -->
 
     <string-array name="natraj_subevent_venues">
@@ -756,37 +756,114 @@
         <item>Fifth</item>
     </string-array>
 
-    <string-array name="sponsor_names">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-    </string-array>
-
     <string-array name="sponsor_types">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>Title Sponsor</item>
+        <item>In Association with</item>
+        <item>In Association with</item>
+        <item>Powered By</item>
+        <item>Co-presented By</item>
+        <item>Co-sponsored By</item>
+        <item>EDM Night\nTitle Sponsor</item>
+        <item>EDM Night\nPowered By</item>
+        <item>Kavya Manjari\nTitle Sponsor</item>
+        <item>Kavya Manjari\nAssociate Sponsor</item>
+        <item>Comedy Night\nTitle Sponsor</item>
+        <item>Footwear Partner</item>
+        <item>Insurance Partner</item>
+        <item>Online Events Partner</item>
+        <item>Style Partner</item>
+        <item>Hydration Partner</item>
+        <item>Technology Partner</item>
+        <item>Cab Partner</item>
+        <item>Time Partner</item>
+        <item>CAT Coaching Partner</item>
+        <item>Energy Partner</item>
+        <item>Education Partner</item>
+        <item>Animals Right Partner</item>
+        <item>Web Hosting Partner</item>
+        <item>Trip Partner</item>
+        <item>Audio Partner</item>
+        <item>Publication Partner</item>
+        <item>Event Sponsor</item>
+        <item>Cafe Partner</item>
+        <item>Pizza Partner</item>
+        <item>Dressing Partner</item>
+        <item>Travel Partner</item>
+        <item>Fashion Institute Partner</item>
+        <item>Lifestyle Partner</item>
+        <item>Food Baazar Partner</item>
+        <item>Music Academy Partner</item>
+        <item>Online Payment Partner</item>
+        <item>JEE Coaching Partner</item>
+        <item>Stationery Partner</item>
+        <item>Fashion Partner</item>
+        <item>Startup Partner</item>
+        <item>Social Cause Partner</item>
+        <item>Media Partner</item>
+        <item>Cultural Partner</item>
+        <item>Online News Partner</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
+        <item>Sponsored By</item>
     </string-array>
 
     <string-array name="sponsor_logo_urls">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>https://image.ibb.co/e4WtBm/lava.jpg</item>
+        <item>https://image.ibb.co/fTc0rm/atlas.jpg</item>
+        <item>https://image.ibb.co/hnA9j6/bnatural.jpg</item>
+        <item>https://image.ibb.co/dGWFP6/colors_of_youth.jpg</item>
+        <item>https://image.ibb.co/iCRMxR/the_quint.jpg</item>
+        <item>https://image.ibb.co/cYTvP6/iffco.jpg</item>
+        <item>https://image.ibb.co/e8gh46/odm_intergrity.jpg</item>
+        <item>https://image.ibb.co/dN9DBm/ointegrity.jpg</item>
+        <item>https://image.ibb.co/ei9wWm/utkarsh_bank.jpg</item>
+        <item>https://image.ibb.co/gq4DBm/chetmani.jpg</item>
+        <item>https://image.ibb.co/n3gh46/bingo.jpg</item>
+        <item>https://image.ibb.co/f3K8cR/sparx.jpg</item>
+        <item>https://image.ibb.co/iTUrxR/max_life.jpg</item>
+        <item>https://image.ibb.co/mhprxR/fastrack.jpg</item>
+        <item>https://image.ibb.co/bLKVrm/spykar.jpg</item>
+        <item>https://image.ibb.co/dxTjHR/ocean.jpg</item>
+        <item>https://image.ibb.co/kYFycR/cet.jpg</item>
+        <item>https://image.ibb.co/c6mtBm/ola.jpg</item>
+        <item>https://image.ibb.co/h4Tej6/sonata.jpg</item>
+        <item>https://image.ibb.co/mRi6Wm/career_launcher.jpg</item>
+        <item>https://image.ibb.co/eoE246/fru2go.jpg</item>
+        <item>https://image.ibb.co/dHHYBm/day1.jpg</item>
+        <item>https://image.ibb.co/kzkWxR/peta.jpg</item>
+        <item>https://image.ibb.co/naNGWm/znetlive.jpg</item>
+        <item>https://image.ibb.co/ciKfrm/Ixigo.jpg</item>
+        <item>https://image.ibb.co/dquVrm/zebronics.jpg</item>
+        <item>https://image.ibb.co/ngcdcR/made_easy.jpg</item>
+        <item>https://image.ibb.co/bFX0rm/herts_digital.jpg</item>
+        <item>https://image.ibb.co/jxxBxR/koolders_cafe.jpg</item>
+        <item>https://image.ibb.co/nfWJBm/downtown_pizza.jpg</item>
+        <item>https://image.ibb.co/jqAEHR/silkfab.jpg</item>
+        <item>https://image.ibb.co/iLqLrm/easy_my_trip.jpg</item>
+        <item>https://image.ibb.co/bYCBxR/eifa.jpg</item>
+        <item>https://image.ibb.co/muhGWm/trends.jpg</item>
+        <item>https://image.ibb.co/fxWRWm/baba_shree.jpg</item>
+        <item>https://image.ibb.co/jsKPHR/indian_idol_acad.jpg</item>
+        <item>https://image.ibb.co/iDybxR/telr.jpg</item>
+        <item>https://image.ibb.co/cMtJcR/ambition_gurukul.jpg</item>
+        <item>https://image.ibb.co/dDfmWm/camlin.jpg</item>
+        <item>https://image.ibb.co/mT20rm/celio.jpg</item>
+        <item>https://image.ibb.co/hwVLrm/edu_vitae.jpg</item>
+        <item>https://image.ibb.co/d92BxR/oxfam.jpg</item>
+        <item>https://image.ibb.co/emXBxR/atkt.jpg</item>
+        <item>https://image.ibb.co/my6h46/isreal_embassy.jpg</item>
+        <item>https://image.ibb.co/jH1tBm/inshorts.jpg</item>
+        <item>https://image.ibb.co/nG6FP6/oI_stay.jpg</item>
+        <item>https://image.ibb.co/n0W4HR/fidm.jpg</item>
+        <item>https://image.ibb.co/nm6ocR/tastybuds.jpg</item>
+        <item>https://image.ibb.co/iWQmWm/evision_ias.jpg</item>
+        <item>https://image.ibb.co/nbfLrm/angeethi.jpg</item>
+        <item>https://image.ibb.co/kOgh46/robotribes.jpg</item>
+        <item>https://image.ibb.co/nd8Uj6/funk.jpg</item>
     </string-array>
 
 </resources>

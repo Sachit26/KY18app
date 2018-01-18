@@ -41,7 +41,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
         Glide.with(context)
                 .load(mLogoUrls[position])
                 .apply(new RequestOptions()
-                        .centerCrop()
+                        .fitCenter()
                         .dontAnimate()
                         .dontTransform())
                 .into(holder.mLogoView);

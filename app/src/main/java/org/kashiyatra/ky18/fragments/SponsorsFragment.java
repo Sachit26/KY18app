@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import org.kashiyatra.ky18.R;
 import org.kashiyatra.ky18.adapters.SponsorAdapter;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 public class SponsorsFragment extends Fragment {
 
@@ -40,7 +43,8 @@ public class SponsorsFragment extends Fragment {
         mSponsorLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                return position < 4 ? 2 : 1;
+                List<Integer> bigSponsorIndices = Arrays.asList(0, 5);
+                return bigSponsorIndices.contains(position) ? 2 : 1;
             }
         });
         RecyclerView.Adapter mSponsorAdapter = new SponsorAdapter(getContext(), types, logoUrls);

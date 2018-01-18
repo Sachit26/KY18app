@@ -4,40 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="5dp"
-    android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="5dp"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    app:contentPadding="4dp">
 
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/sponsor_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:maxHeight="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/abhinay"/>
 
         <TextView
             android:id="@+id/sponsor_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Title Sponsor"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/opensans_semibold"
+            android:paddingBottom="5dp"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/sponsor_logo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/sponsor_type"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
